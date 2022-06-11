@@ -11,4 +11,13 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="lorem_ipsum">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the but also the leap into electronic typesetting, remaining essentially.</string>
+    <string name="baseline_parameters"><u>Baseline Parameters :</u></string>
+    <string name="target_saturation"><u>Target Saturation :</u></string>
+    <string name="risk_of_type_2_failure"><u>Risk of Type-2 Failure ? :</u></string>
+    <string name="comorbidities"><u>Comorbidities :</u></string>
+    <string name="oxygen_prescription"><u>Oxygen Prescription :</u></string>
+    <string name="reason_for_oxygen_therapy"><u>Reason For Oxygen Therapy :</u></string>
+    <string name="abg"><u>ABG:</u></string>
+    <string name="delivery_system_recomended"><u>Delivery System Recomended ? :</u></string>
 </resources>

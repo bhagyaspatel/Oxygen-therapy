@@ -3,10 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/font/fonts.xml" value="0.28055555555555556" />
         <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.23156890869140628" />
         <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.10845447589900535" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.13677811550151975" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_signin.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_signup.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_pretherapy_form_details.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_pretherapy_forn_details.xml" value="0.13677811550151975" />
         <entry key="app/src/main/res/layout/fragment_send_notification.xml" value="0.14361702127659576" />
         <entry key="app/src/main/res/layout/notification.xml" value="0.15070921985815602" />
       </map>
