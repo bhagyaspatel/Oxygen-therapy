@@ -112,13 +112,17 @@ class SendNotification : Fragment() {
         return null
     }
 
-    private fun createNotificationObject(msg: String, age : String, sex : String) {
+    private fun createNotificationObject(name: String, age : String, sex : String) {
         val notification = JSONObject()
         val notificationBody = JSONObject()
+        val msg = "Urgent Oxygen Therapy Needed"
 
         try{
             notificationBody.put("title", "Oxygen therapy needed")
             notificationBody.put("message", msg)
+            notificationBody.put("name", name)
+            notificationBody.put("age", age)
+            notificationBody.put("sex", sex)
             notification.put("to", token2)
             notification.put("data", notificationBody)
             Log.d(TAG, "try")

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.Intent.getIntent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -18,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val user = FirebaseAuth.getInstance().currentUser
+    val user = FirebaseAuth.getInstance().currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,10 +29,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if (user == null){
+            Log.d("MainActivity", "User null")
             val intent = Intent (this, SignupActivity::class.java)
             startActivity(intent)
             finish()
         }else{
+            Log.d("MainActivity", "User not null")
             val intent = Intent (this, LoginActivity::class.java)
             startActivity(intent)
             finish()

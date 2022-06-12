@@ -1,6 +1,6 @@
 package com.example.notification_trial02.modals
 
-data class patientAndHospital (
+data class PatientAndHospital (
         val name : String,
         val age : Int,
         val  sex : String,

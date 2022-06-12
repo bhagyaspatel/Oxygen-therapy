@@ -30,12 +30,12 @@
             android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="This is the trial message layout"
-            android:layout_toRightOf="@id/notification_logo"
             android:layout_below="@id/title"
-            android:textSize="@dimen/_16sdp"
+            android:layout_marginStart="@dimen/_6sdp"
             android:layout_marginTop="@dimen/_2sdp"
-            android:layout_marginStart="@dimen/_6sdp"/>
+            android:layout_toRightOf="@id/notification_logo"
+            android:text="This is the trial message layout"
+            android:textSize="@dimen/_16sdp" />
 
     </RelativeLayout>
 

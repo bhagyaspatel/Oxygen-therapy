@@ -10,15 +10,22 @@ import android.graphics.Color
 import android.os.Build
 import android.util.Log
 import android.widget.RemoteViews
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
+import com.example.notification_trial02.modals.PatientAndHospital
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.util.*
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     private val ADMIN_CHANNEL_ID = "admin_channel"
     private val TAG = "NotificationTAG"
+
+    private var db = FirebaseFirestore.getInstance()
 
     override fun onNewToken(token: String){
         super.onNewToken(token)
@@ -37,14 +44,25 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         if (remoteMessage.data.size > 0){ //when sending to particular user
             val title = remoteMessage.data.get("title")
             val message = remoteMessage.data.get("message")
+            val name = remoteMessage.data.get("name")
+            val age = remoteMessage.data.get("age")
+            val sex = remoteMessage.data.get("sex")
+
             Log.d(TAG, "title and message dispatched $title and $message")
-            generateNotifictaion(title!!, message!!)
+            generateNotifictaion(title!!, message!!, name!!, age!!, sex!!)
         }
     }
 
-    private fun generateNotifictaion(title : String, message : String){
+    private fun generateNotifictaion(title : String, message : String, name : String? = null, age : String? = null, sex : String? = null){
 
         Log.d(TAG, "generate Notification() $title and $message")
+        Log.d(TAG, "generate Notification() $name and $age and $sex")
+
+        if (age != null && name != null && sex!= null) {
+            storePatient(name,age,sex)
+        }else{
+            Log.d(TAG, "NAS is null")
+        }
 
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -76,6 +94,20 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             setupChannels(notificationManager)
 
         notificationManager.notify(notificationID, notificationBuilder.build())
+    }
+
+    private fun storePatient(name: String, age: String, sex: String) {
+        val patient = PatientAndHospital(name, age.toInt(), sex, "Mathikere", 101)
+        val currentTime = LocalDateTime.now().toString()
+
+        db.collection("PendingPatient").document(currentTime).set(patient)
+            .addOnSuccessListener {
+                Log.d(TAG, "Patient Added to pending List")
+                Toast.makeText(this, "Patient added to the pending list", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                Log.d(TAG, it.message!!)
+            }
     }
 
     private fun getRemoteView(title: String?, message: String?): RemoteViews? {
