@@ -20,4 +20,7 @@
     <string name="reason_for_oxygen_therapy"><u>Reason For Oxygen Therapy :</u></string>
     <string name="abg"><u>ABG:</u></string>
     <string name="delivery_system_recomended"><u>Delivery System Recomended ? :</u></string>
+    <string name="need_oxygen_therapy">Need Oxygen Therapy ?</string>
+    <string name="give_details">Give Details</string>
+    <string name="Required">*Required</string>
 </resources>

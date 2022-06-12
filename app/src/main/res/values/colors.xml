@@ -13,4 +13,6 @@
     <color name="light_app_green">#8FC79A</color>
     <color name="lighter_app_green">#CEE9B6</color>
     <color name="bluish_app_green">#016170</color>
+
+    <color name="danger_red">#E61A1A</color>
 </resources>

@@ -5,36 +5,40 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.example.notification_trial02.ClientSideActivities.HomeActivity
+import com.example.notification_trial02.AdminSideActivity.AdminHomeActivity
 import com.example.notification_trial02.MainActivity
 import com.example.notification_trial02.R
 import com.example.notification_trial02.adminSideFragments.PretherapyFormDetails
-import com.example.notification_trial02.clientSideFragments.SendNotification
-import com.example.notification_trial02.databinding.ActivityLoginBinding
+import com.example.notification_trial02.databinding.ActivityAdminSignupBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class LoginActivity : AppCompatActivity() {
-    private val TAG = "Login"
-    private lateinit var binding: ActivityLoginBinding
-    private lateinit var auth : FirebaseAuth
+class AdminSignupActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private lateinit var binding : ActivityAdminSignupBinding
+    private val auth = FirebaseAuth.getInstance()
+    private val TAG = "AdminSignUp"
+
+    override fun onCreate(savedInstanceState: Bundle
+    ?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityAdminSignupBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
-        binding.switchAdminBtn.setOnClickListener {
-            val intent = Intent (this, AdminSignupActivity::class.java)
-            startActivity(intent)
+        binding.etEmail.addTextChangedListener{
+            binding.etEmail.error = null
         }
 
-        auth = FirebaseAuth.getInstance()
-        binding.signupBtn.setOnClickListener {
+        binding.etPassword.addTextChangedListener{
+            binding.etPassword.error = null
+        }
+
+        binding.adminLoginBtn.setOnClickListener {
             binding.etEmail.error = null
             binding.etPassword.error = null
 
@@ -44,11 +48,11 @@ class LoginActivity : AppCompatActivity() {
             if (validate(email, password)) {
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) {
-                        val intent = Intent(this, HomeActivity::class.java)
-//                        intent.putExtra("Flag", "Client")
+                        val intent = Intent(this, AdminHomeActivity::class.java)
+//                        intent.putExtra("Flag", "Admin")
                         startActivity(intent)
                         finish()
-//                        addFragmentToActivity(supportFragmentManager, SendNotification(), binding.clientLogincontainer.id)
+//                        addFragmentToActivity(supportFragmentManager, PretherapyFormDetails(), binding.adminSignupContainer.id)
                     }
                     .addOnFailureListener {
                         Log.e(TAG, "onCreate: ${it.message}",)
@@ -64,7 +68,6 @@ class LoginActivity : AppCompatActivity() {
         }
         transaction.commit()
     }
-
 
     private fun validate(email: String, password: String): Boolean {
         var valid = true

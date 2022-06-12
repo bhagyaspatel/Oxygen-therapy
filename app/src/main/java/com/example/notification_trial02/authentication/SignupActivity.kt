@@ -7,8 +7,14 @@ import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import com.example.notification_trial02.ClientSideActivities.HomeActivity
 import com.example.notification_trial02.MainActivity
 import com.example.notification_trial02.R
+import com.example.notification_trial02.adminSideFragments.PretherapyFormDetails
+import com.example.notification_trial02.clientSideFragments.SendNotification
 import com.example.notification_trial02.databinding.ActivitySignupBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -84,10 +90,12 @@ class SignupActivity : AppCompatActivity() {
 //                                        )
 //                                    }
 //                              }
-                            val intent = Intent(this, MainActivity::class.java)
+                            Log.d(TAG, "signed in")
+                            val intent = Intent(this, HomeActivity::class.java)
+//                            intent.putExtra("Flag", "Client")
                             startActivity(intent)
                             finish()
-                            Log.d(TAG, "signed in")
+//                            addFragmentToActivity(supportFragmentManager, SendNotification(), binding.clientSignupContainer.id)
                         }
                         .addOnFailureListener {
                             Toast.makeText(
@@ -102,6 +110,15 @@ class SignupActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun addFragmentToActivity(supportFragmentManager: FragmentManager, fragment: Fragment?, frameId: Int) {
+        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        if (fragment != null) {
+            transaction.add(frameId, fragment)
+        }
+        transaction.commit()
+    }
+
 
     private fun validate(email: String, password: String, confirmPassword: String): Boolean {
         var valid = true

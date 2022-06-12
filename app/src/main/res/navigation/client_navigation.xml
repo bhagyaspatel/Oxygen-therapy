@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/clientHomeFragment">
+
+    <fragment
+        android:id="@+id/clientHomeFragment"
+        android:name="com.example.notification_trial02.clientSideFragments.ClientHomeFragment"
+        android:label="fragment_client_home"
+        tools:layout="@layout/fragment_client_home" >
+        <action
+            android:id="@+id/action_clientHomeFragment_to_sendNotification"
+            app:destination="@id/sendNotification" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendNotification"
+        android:name="com.example.notification_trial02.clientSideFragments.SendNotification"
+        android:label="fragment_send_notification"
+        tools:layout="@layout/fragment_send_notification" />
+</navigation>
