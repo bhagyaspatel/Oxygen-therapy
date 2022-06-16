@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/oxygen_bg"
+    android:backgroundTint="#9AFFFFFF"
+    android:backgroundTintMode="src_over"
+    tools:context=".adminSideFragments.AdminHomeFragment">
+
+    <TextView
+        android:id="@+id/welcomeText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome..."
+        android:gravity="start"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_26sdp"
+        android:textColor="@color/dark_app_green"
+        android:fontFamily="@font/arbutus"
+        android:textSize="@dimen/_26sdp"/>
+
+    <TextView
+        android:id="@+id/sloganText"
+        app:layout_constraintTop_toBottomOf="@id/welcomeText"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ready_to_serve_the_nation"
+        android:gravity="start"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:textColor="@color/dark_app_green"
+        android:fontFamily="@font/arbutus"
+        android:textSize="@dimen/_26sdp"/>
+
+    <TextView
+        android:id="@+id/showListBtn"
+        app:layout_constraintTop_toBottomOf="@id/sloganText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pending Patients"
+        android:textSize="@dimen/_26sdp"
+        android:fontFamily="@font/bungee"
+        android:textColor="@color/bluish_app_green"
+        android:background="@drawable/card"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="@dimen/_70sdp"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:padding="@dimen/_6sdp"
+        tools:targetApi="p" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,6 +32,7 @@
         android:layout_marginTop="@dimen/_80sdp"
         android:layout_marginStart="@dimen/_4sdp"
         android:layout_marginEnd="@dimen/_4sdp"
+        android:gravity="center"
         android:padding="@dimen/_6sdp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

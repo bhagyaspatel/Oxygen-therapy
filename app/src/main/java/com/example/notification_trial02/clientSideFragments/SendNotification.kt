@@ -14,6 +14,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.notification_trial02.databinding.FragmentSendNotificationBinding
+import com.example.notification_trial02.topic
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -22,7 +23,9 @@ class SendNotification : Fragment() {
     private lateinit var binding : FragmentSendNotificationBinding
     private val token = "eqn1jMYEQ1eVP2p9wSMi0w:APA91bFz5KpUeaEDyhdeFM3kvxyNNZkB8ceBkKOtiLhcrjUhvtEkcmMeG7LGLhO37koigo0HWdiezK9-Rc0OxqQEyqcqVQ82eZXlJP8g5BCdO03sWh5VKoLc3RyVjLjgvEEqZrohNW9_"
     private val token2 = "doBcozDpSPWEEjKI9zQNd7:APA91bHRLGtmzoC-H_9qh7U_ciJpIdo3bqD1XlNCKYMvX_kZvsPpqzBkYtZILcejm1RWpClV27-SssTgLhNPgfzzPiUu-QiWUBTLQ8P4X4nmIPcLxV0YgfT9dkkX2OH6KkE-iZUeu3lH"
+    private val token3 = "cMLrdC6ZT2CVf6pWN7kzBO:APA91bGga1e0FQmnDpp8SRcKfcGELhpRry6iJUwTKkfIJS6fAmNJ9SMEPndv3KQyyPn85sCQigKrMtR4JN-QLwHAlRBNs8oWSm7BNaGYVhY4dK1bjilpOiPlIRcrehUFKWevFTRDA7og"
     //token specifies the device to whome we are sending the notification : admin side token
+
 
     private val TAG = "Send_notification_message"
     private val FCM_API = "https://fcm.googleapis.com/fcm/send"
@@ -123,7 +126,8 @@ class SendNotification : Fragment() {
             notificationBody.put("name", name)
             notificationBody.put("age", age)
             notificationBody.put("sex", sex)
-            notification.put("to", token2)
+
+            notification.put("to", topic) ///####
             notification.put("data", notificationBody)
             Log.d(TAG, "try")
         }catch (e: JSONException){

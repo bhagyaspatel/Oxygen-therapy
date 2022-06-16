@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Notification_trial02">
         <activity
+            android:name=".authentication.AdminLoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdminSideActivity.AdminHomeActivity"
             android:exported="false" />
         <activity

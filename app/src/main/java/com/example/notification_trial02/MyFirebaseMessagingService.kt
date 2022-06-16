@@ -1,5 +1,6 @@
 package com.example.notification_trial02
 
+import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -8,6 +9,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
+import android.text.format.DateFormat.format
 import android.util.Log
 import android.widget.RemoteViews
 import android.widget.Toast
@@ -16,8 +18,10 @@ import com.example.notification_trial02.modals.PatientAndHospital
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
@@ -96,9 +100,15 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         notificationManager.notify(notificationID, notificationBuilder.build())
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun storePatient(name: String, age: String, sex: String) {
-        val patient = PatientAndHospital(name, age.toInt(), sex, "Mathikere", 101)
         val currentTime = LocalDateTime.now().toString()
+        val dateFormater = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")
+        val formatedDate = currentTime.format(dateFormater)
+
+        val timeStamp : String = SimpleDateFormat ("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+
+        val patient = PatientAndHospital(name, age.toInt(), sex, timeStamp,"Mathikere", 101)
 
         db.collection("PendingPatient").document(currentTime).set(patient)
             .addOnSuccessListener {

@@ -16,13 +16,16 @@ import com.example.notification_trial02.R
 import com.example.notification_trial02.adminSideFragments.PretherapyFormDetails
 import com.example.notification_trial02.clientSideFragments.SendNotification
 import com.example.notification_trial02.databinding.ActivitySignupBinding
+import com.example.notification_trial02.modals.User
+import com.example.notification_trial02.modals.UserType
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignupActivity : AppCompatActivity() {
 
     private val TAG = "Signup"
     lateinit var binding: ActivitySignupBinding
-
+    private var db = FirebaseFirestore.getInstance()
     private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +34,11 @@ class SignupActivity : AppCompatActivity() {
         binding = ActivitySignupBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        binding.switchAdminBtn.setOnClickListener {
+            val intent = Intent (this, AdminLoginActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.etEmail.addTextChangedListener{
             binding.etEmail.error = null
@@ -54,28 +62,14 @@ class SignupActivity : AppCompatActivity() {
 
         binding.signupBtn.setOnClickListener {
 
-//            if (auth.currentUser != null) {
-//                if (auth.currentUser?.isEmailVerified() == true) {
-//                    binding.etEmail.setText("")
-//                    binding.etPassword.setText("")
-//                    binding.etConfirmPassword.setText("")
-//
-//                    val intent = Intent(this, MainActivity::class.java)
-//                    startActivity(intent)
-//                    finish()
-//                    Log.d(TAG, "email verified")
-//                }else{
-//                    Log.d(TAG, "email not verified yet")
-//                }
-//        }else{
-                val email = binding.etEmail.text.toString()
-                val password = binding.etPassword.text.toString()
-                val confirmPassword = binding.etConfirmPassword.text.toString()
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
+            val confirmPassword = binding.etConfirmPassword.text.toString()
 
-                if (validate(email, password, confirmPassword)) {
-                    auth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(this) {
-//                            auth.currentUser?.sendEmailVerification()
+            if (validate(email, password, confirmPassword)) {
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnSuccessListener {
+//                           auth.currentUser?.sendEmailVerification()
 //                                ?.addOnCompleteListener { task ->
 //                                    if (task.isSuccessful) {
 //                                        Toast.makeText(
@@ -90,23 +84,29 @@ class SignupActivity : AppCompatActivity() {
 //                                        )
 //                                    }
 //                              }
-                            Log.d(TAG, "signed in")
+                        Log.d(TAG, "signed in")
+                        val newUser = User(UserType.CLIENT)
+
+                        auth.currentUser?.let { user->
+                            db.collection("users").document(user.uid.toString())
+                                .set(newUser)
+                        }
+
+                        if (auth.currentUser == null){
+                            Log.d(TAG, "current user is null");
+                        }else{
+                            Log.d(TAG, "current user not null");
                             val intent = Intent(this, HomeActivity::class.java)
-//                            intent.putExtra("Flag", "Client")
                             startActivity(intent)
                             finish()
-//                            addFragmentToActivity(supportFragmentManager, SendNotification(), binding.clientSignupContainer.id)
                         }
-                        .addOnFailureListener {
-                            Toast.makeText(
-                                this,
-                                "The email address is already in use by another account.",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            Log.e(TAG, "onCreate: ${it.message}",)
-                        }
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "The email address is already in use by another account.", Toast.LENGTH_SHORT).show()
+                        Log.e(TAG, "onCreate: ${it.message}",)
+                    }
                 }
-//            }
+//          }
         }
 
     }
