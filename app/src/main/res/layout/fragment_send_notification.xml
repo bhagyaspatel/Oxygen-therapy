@@ -5,9 +5,10 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".clientSideFragments.SendNotification"
-    android:layout_marginStart="@dimen/_6sdp"
-    android:layout_marginEnd="@dimen/_6sdp"
-    android:layout_marginTop="@dimen/_4sdp">
+    android:backgroundTint="#9AFFFFFF"
+    android:background="@color/white"
+    android:backgroundTintMode="src_over"
+    android:padding="@dimen/_10sdp">
 
     <TextView
         android:id="@+id/detailLabel"
@@ -21,9 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_20sdp"
-        />
-
+        android:layout_marginTop="@dimen/_20sdp"/>
     <View
         android:layout_width="100dp"
         android:layout_height="4dp"

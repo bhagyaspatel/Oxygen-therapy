@@ -2,18 +2,45 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/_10sdp"
+    android:background="@color/white"
     tools:context=".adminSideFragments.PretherapyFormDetails">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="@dimen/_10sdp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/patientListLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pretherapy_form"
+            android:textSize="@dimen/_26sdp"
+            android:fontFamily="@font/arbutus"
+            android:gravity="center_horizontal"
+            android:textColor="@color/dark_app_green"
+            android:textStyle="bold"/>
+
+        <View
+            android:layout_width="180dp"
+            android:layout_height="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/patientListLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:background="@color/darker_app_green"
+            android:layout_gravity="center"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/textView"
@@ -23,18 +50,21 @@
                 android:text="@string/reason_for_oxygen_therapy"
                 android:textColor="@color/text_black"/>
 
-            <TextView
-                android:id="@+id/textView2"
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/rsn"
+                android:backgroundTint="@color/darker_app_green"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/_12sdp"
-                android:text="@string/lorem_ipsum" />
+                android:singleLine="false"
+                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
@@ -50,12 +80,17 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:orientation="horizontal">
                 <RadioButton
+                    android:id="@+id/presYes"
+                    android:checked="true"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="25dp"
+                    android:textColor="@color/black"
                     android:text="Yes" />
                 <RadioButton
+                    android:id="@+id/presNo"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="25dp"
+                    android:textColor="@color/black"
                     android:text="No" />
             </RadioGroup>
         </LinearLayout>
@@ -63,8 +98,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:orientation="horizontal">
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,18 +108,86 @@
                 android:text="@string/comorbidities"
                 android:textColor="@color/text_black"/>
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="@dimen/_150sdp"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:spinnerMode="dropdown"
-                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:id="@+id/dm"
+                        android:textColor="@color/black"
+                        android:text="DM"
+                        android:layout_weight="1"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:spinnerMode="dropdown"
+                        android:layout_height="wrap_content"/>
+                    <CheckBox
+                        android:id="@+id/htn"
+                        android:textColor="@color/black"
+                        android:text="HTN"
+                        android:layout_weight="1"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        tools:colorAccent="@color/lighter_app_green"
+                        android:spinnerMode="dropdown"
+                        android:layout_height="wrap_content"/>
+                    <CheckBox
+                        android:id="@+id/copd"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:text="COPD"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:spinnerMode="dropdown"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:id="@+id/asthama"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:text="BRONCHIAL ASTHAMA"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:spinnerMode="dropdown"
+                        android:layout_height="wrap_content"/>
+                    <CheckBox
+                        android:id="@+id/ihd"
+                        android:text="IHD"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:spinnerMode="dropdown"
+                        android:layout_height="wrap_content"/>
+                    <CheckBox
+                        android:id="@+id/others"
+                        android:text="OTHERS"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:spinnerMode="dropdown"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
@@ -99,12 +203,17 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:orientation="horizontal">
                 <RadioButton
+                    android:id="@+id/riskYes"
+                    android:checked="true"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="25dp"
+                    android:textColor="@color/black"
                     android:text="Yes" />
                 <RadioButton
+                    android:id="@+id/riskNo"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="25dp"
+                    android:textColor="@color/black"
                     android:text="No" />
             </RadioGroup>
         </LinearLayout>
@@ -112,7 +221,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
@@ -128,12 +237,17 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:orientation="horizontal">
                 <RadioButton
+                    android:id="@+id/saturationLow"
+                    android:checked="true"
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="25dp"
+                    android:textColor="@color/black"
                     android:text="88-92 %" />
                 <RadioButton
+                    android:id="@+id/saturationHigh"
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="25dp"
+                    android:textColor="@color/black"
                     android:text="94-98 %" />
             </RadioGroup>
         </LinearLayout>
@@ -141,7 +255,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:orientation="vertical">
 
             <TextView
@@ -160,6 +274,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:orientation="horizontal">
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -173,8 +288,12 @@
                             android:text="HR-"
                             android:textColor="@color/text_black"/>
 
-                        <EditText
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/hr"
+                            android:textColor="@color/black"
+                            android:inputType="numberDecimal"
                             android:layout_width="@dimen/_60sdp"
+                            android:backgroundTint="@color/darker_app_green"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
@@ -191,7 +310,11 @@
                             android:text="BP-"
                             android:textColor="@color/text_black"/>
 
-                        <EditText
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/bp"
+                            android:textColor="@color/black"
+                            android:inputType="numberDecimal"
+                            android:backgroundTint="@color/darker_app_green"
                             android:layout_width="@dimen/_60sdp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_height="wrap_content"/>
@@ -215,9 +338,13 @@
                             android:text="SPO2-"
                             android:textColor="@color/text_black"/>
 
-                        <EditText
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/spo2"
+                            android:textColor="@color/black"
+                            android:inputType="numberDecimal"
                             android:layout_width="@dimen/_60sdp"
                             android:layout_marginStart="@dimen/_5sdp"
+                            android:backgroundTint="@color/darker_app_green"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
 
@@ -233,21 +360,24 @@
                             android:text="RR-"
                             android:textColor="@color/text_black"/>
 
-                        <EditText
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/rr"
+                            android:textColor="@color/black"
+                            android:inputType="numberDecimal"
                             android:layout_width="@dimen/_60sdp"
                             android:layout_marginStart="@dimen/_5sdp"
+                            android:backgroundTint="@color/darker_app_green"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
 
                 </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:orientation="vertical">
 
             <TextView
@@ -266,6 +396,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:orientation="horizontal">
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -279,9 +410,13 @@
                             android:text="PH-"
                             android:textColor="@color/text_black"/>
 
-                        <EditText
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/ph"
+                            android:textColor="@color/black"
+                            android:inputType="numberDecimal"
                             android:layout_width="@dimen/_60sdp"
                             android:layout_marginStart="@dimen/_5sdp"
+                            android:backgroundTint="@color/darker_app_green"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
 
@@ -297,9 +432,13 @@
                             android:text="PCO2-"
                             android:textColor="@color/text_black"/>
 
-                        <EditText
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/pco2"
+                            android:textColor="@color/black"
+                            android:inputType="numberDecimal"
                             android:layout_width="@dimen/_60sdp"
                             android:layout_marginStart="@dimen/_5sdp"
+                            android:backgroundTint="@color/darker_app_green"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -321,9 +460,13 @@
                             android:text="PO2-"
                             android:textColor="@color/text_black"/>
 
-                        <EditText
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/po2"
+                            android:inputType="numberDecimal"
                             android:layout_width="@dimen/_60sdp"
+                            android:textColor="@color/black"
                             android:layout_marginStart="@dimen/_5sdp"
+                            android:backgroundTint="@color/darker_app_green"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
 
@@ -339,10 +482,14 @@
                             android:text="HCO3-"
                             android:textColor="@color/text_black"/>
 
-                        <EditText
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/hco3"
                             android:layout_width="@dimen/_60sdp"
+                            android:textColor="@color/black"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/darker_app_green"
+                            android:inputType="numberDecimal" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -358,10 +505,13 @@
                         android:text="LACTATE-"
                         android:textColor="@color/text_black"/>
 
-                    <EditText
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/lactate"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
+                        android:textColor="@color/black"
+                        android:backgroundTint="@color/darker_app_green"
                         android:hint="If Available"/>
                 </LinearLayout>
             </LinearLayout>
@@ -371,7 +521,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
@@ -387,16 +537,57 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:orientation="horizontal">
                 <RadioButton
+                    android:id="@+id/deliveryYes"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="25dp"
+                    android:textColor="@color/black"
                     android:text="Yes" />
                 <RadioButton
+                    android:id="@+id/deliveryNo"
+                    android:checked="true"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="25dp"
+                    android:textColor="@color/black"
                     android:text="No" />
             </RadioGroup>
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/deliverySystem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <TextView
+                android:id="@+id/deliverySystemLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/delivery_system_used"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_deliverySystem"
+                android:backgroundTint="@color/darker_app_green"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:singleLine="false"/>
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/savePatientBtn"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:background="@color/lighter_app_green"
+            android:layout_gravity="center"
+            android:text="@string/save"
+            android:outlineAmbientShadowColor="@color/darker_app_green"
+            android:textColor="@color/darker_app_green"
+            android:layout_marginTop="@dimen/_20sdp" />
     </LinearLayout>
 
 

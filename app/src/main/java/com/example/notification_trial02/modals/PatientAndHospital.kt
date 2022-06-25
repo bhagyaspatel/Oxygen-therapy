@@ -4,14 +4,12 @@ import androidx.room.PrimaryKey
 
 data class PatientAndHospital (
         val name : String? = null,
-        val age : Int = 1,
-        val sex : String = "male",
+        val age : Int? = 1,
+        val sex : String? = "male",
         val date : String? = null,
         val area : String? = null,
-        val hospitalNumber : Int? = null,
-
-        @PrimaryKey (autoGenerate = true)
-        val pk : Long = 1
+        val hospitalNumber : String? = null,
+        val pk : String ? = null
         ){
         override fun equals(other: Any?): Boolean {
 

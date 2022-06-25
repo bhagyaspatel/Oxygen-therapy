@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:width="@dimen/_600sdp"
+        android:height="@dimen/_600sdp">
+        <shape>
+            <gradient
+                android:startColor="@color/gradientLight"
+                android:endColor="@color/gradientDark"
+                android:angle="270">
+            </gradient>
+        </shape>
+    </item>
+
+    <item>
+        <bitmap
+            android:alpha="0.7"
+            android:gravity="bottom|right"
+            android:src="@drawable/oxygen_logo" />
+    </item>
+
+</layer-list>
+<!--    android:top="@dimen/_100sdp"-->
+<!--    android:left="@dimen/_100sdp"-->

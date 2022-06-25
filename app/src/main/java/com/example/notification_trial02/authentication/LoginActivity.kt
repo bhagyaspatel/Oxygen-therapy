@@ -13,10 +13,11 @@ import com.example.notification_trial02.AdminSideActivity.AdminHomeActivity
 import com.example.notification_trial02.ClientSideActivities.HomeActivity
 import com.example.notification_trial02.MainActivity
 import com.example.notification_trial02.R
+import com.example.notification_trial02.USER
 import com.example.notification_trial02.adminSideFragments.PretherapyFormDetails
 import com.example.notification_trial02.clientSideFragments.SendNotification
 import com.example.notification_trial02.databinding.ActivityLoginBinding
-import com.example.notification_trial02.modals.UserType
+import com.example.notification_trial02.modals.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
@@ -62,12 +63,11 @@ class LoginActivity : AppCompatActivity() {
                         if (it.isSuccessful){
                             val uid = auth.currentUser?.uid.toString()
 
-                            var type : UserType ? = null
                             GlobalScope.launch(Dispatchers.IO) {
-                                db.collection("users").document(uid)
+                                db.collection(USER).document(uid)
                                     .get()
                                     .addOnSuccessListener{
-                                        val data = it.toObject(UserType::class.java)
+                                        val data = it.toObject(User::class.java)
                                         Log.d(TAG, "data from storage is " + data)
 
                                         if (data == null){

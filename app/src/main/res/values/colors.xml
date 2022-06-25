@@ -7,12 +7,24 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="text_black">#F0040303</color>
-    <color name="darker_app_green">#2D8D79</color>
-    <color name="dark_app_green">#5E9387</color>
-    <color name="light_app_green">#8FC79A</color>
-    <color name="lighter_app_green">#CEE9B6</color>
+    <color name="text_black">#CB171212</color>
+<!--    <color name="darker_app_green">#2D8D79</color>-->
+<!--    <color name="dark_app_green">#5E9387</color>-->
+<!--    <color name="light_app_green">#8FC79A</color>-->
+<!--    <color name="lighter_app_green">#CEE9B6</color>-->
+<!--    <color name="bluish_app_green">#016170</color>-->
+    <color name="darker_app_green">#345EA8</color>
+    <color name="dark_app_green">#3B8AC3</color>
+    <color name="light_app_green">#4AB4DE</color>
+    <color name="lighter_app_green">#EEDBCB</color>
     <color name="bluish_app_green">#016170</color>
-
+<!--    <color name="gradientLight">#96e4df</color>-->
+<!--    <color name="gradientDark">#4dccc6</color>-->
+    <color name="gradientLight">#7ee8fa</color>
+    <color name="gradientDark">#eec0c6</color>
+<!--    <color name="bluish_app_green">#016170</color>-->
     <color name="danger_red">#E61A1A</color>
+    <color name="notification">#FFC9A5</color>
+    <color name="colorBlue">#318BDA</color>
+    <color name="gray">#8F979E</color>
 </resources>

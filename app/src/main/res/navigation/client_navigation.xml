@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation"
+    android:id="@+id/client_navigation"
     app:startDestination="@id/clientHomeFragment">
 
     <fragment
@@ -13,10 +13,26 @@
         <action
             android:id="@+id/action_clientHomeFragment_to_sendNotification"
             app:destination="@id/sendNotification" />
+        <action
+            android:id="@+id/action_clientHomeFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment2" />
+        <action
+            android:id="@+id/action_clientHomeFragment_to_contactFragment2"
+            app:destination="@id/contactFragment2" />
     </fragment>
     <fragment
         android:id="@+id/sendNotification"
         android:name="com.example.notification_trial02.clientSideFragments.SendNotification"
         android:label="fragment_send_notification"
         tools:layout="@layout/fragment_send_notification" />
+    <fragment
+        android:id="@+id/aboutFragment2"
+        android:name="com.example.notification_trial02.generalFragments.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/contactFragment2"
+        android:name="com.example.notification_trial02.generalFragments.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" />
 </navigation>

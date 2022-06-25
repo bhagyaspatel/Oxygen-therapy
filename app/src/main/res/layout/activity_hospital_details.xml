@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".authentication.HospitalDetailsActivity"
+    android:padding="@dimen/_6sdp">
+
+    <TextView
+        android:id="@+id/detailLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/give_details"
+        android:textSize="@dimen/_16sdp"
+        android:textStyle="bold"
+        android:fontFamily="@font/arbutus"
+        android:textColor="@color/darker_app_green"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_20sdp" />
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="4dp"
+        app:layout_constraintTop_toBottomOf="@+id/detailLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:background="@color/darker_app_green"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameLabel"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailLabel"
+        app:helperText="@string/Required"
+        app:helperTextTextColor="@color/danger_red"
+        android:textColorHint="@color/bluish_app_green"
+        app:startIconTint="@color/darker_app_green"
+        app:boxStrokeColor="@color/darker_app_green"
+        app:hintTextColor="@color/darker_app_green"
+        android:layout_marginTop="@dimen/_50sdp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_name"
+            android:textColor="@color/darker_app_green"
+            android:singleLine="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/darker_app_green"
+            android:hint="Name of the hospital"
+            android:textColorHint="#000000">
+
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/hospitalNumLabel"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameLabel"
+        android:layout_marginTop="@dimen/_16sdp"
+        app:helperText="@string/Required"
+        app:helperTextTextColor="@color/danger_red"
+        android:textColorHint="@color/bluish_app_green"
+        app:startIconTint="@color/darker_app_green"
+        app:boxStrokeColor="@color/darker_app_green"
+        app:hintTextColor="@color/darker_app_green">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_number"
+            android:textColor="@color/darker_app_green"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/darker_app_green"
+            android:hint="Hospital Number"
+            android:singleLine="false"
+            android:textColorHint="#000000">
+
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/areaLabel"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hospitalNumLabel"
+        app:helperText="@string/Required"
+        app:helperTextTextColor="@color/danger_red"
+        android:textColorHint="@color/bluish_app_green"
+        app:startIconTint="@color/darker_app_green"
+        app:boxStrokeColor="@color/darker_app_green"
+        app:hintTextColor="@color/darker_app_green"
+        android:layout_marginTop="@dimen/_16sdp" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_area"
+            android:textColor="@color/darker_app_green"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/darker_app_green"
+            android:hint="Area"
+            android:textColorHint="#000000">
+
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/saveBtn"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/areaLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_100sdp"
+        android:backgroundTint="@color/light_app_green"
+        android:background="@drawable/card"
+        android:padding="@dimen/_6sdp"
+        android:shadowColor="@color/bluish_app_green"
+        android:textSize="@dimen/_16sdp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

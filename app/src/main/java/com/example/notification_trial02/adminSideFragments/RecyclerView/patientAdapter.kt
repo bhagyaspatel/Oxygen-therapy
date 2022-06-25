@@ -25,20 +25,19 @@ class patientAdapter(private var list : MutableList<PatientAndHospital>, private
         val hospitalNum = itemView.findViewById<TextView>(R.id.hospitalNum)
         val date = itemView.findViewById<TextView>(R.id.date)
 
-
         val deleteBtn = itemView.findViewById<ImageButton>(R.id.delteBtn)
 
         init {
             itemView.setOnClickListener {
                 Log.d(TAG, "ItemView Clicked ${list[adapterPosition].date}")
                 if (list[adapterPosition].date != null)
-                    listener.invoke(true, list[adapterPosition].date!!)
+                    listener.invoke(true, list[adapterPosition].pk!!)
             }
             deleteBtn.setOnClickListener {
-                Log.d(TAG, "delete btn Clicked ${list[adapterPosition].date}")
+                Log.d(TAG, "delete btn Clicked ${list[adapterPosition].pk}")
 
                 if (list[adapterPosition].date != null)
-                    listener.invoke(false, list[adapterPosition].date!!)
+                    listener.invoke(false, list[adapterPosition].pk!!)
 
 //                removeFromView(adapterPosition)
                 list.removeAt(adapterPosition)
@@ -101,7 +100,6 @@ class patientAdapter(private var list : MutableList<PatientAndHospital>, private
 
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
             return (oldPatientList[oldItemPosition].pk == newPatientList[newItemPosition].pk)
-//            Log.d(TAG, "duff call back called")
         }
 
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

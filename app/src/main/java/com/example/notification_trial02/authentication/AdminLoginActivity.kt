@@ -11,9 +11,7 @@ import com.example.notification_trial02.AdminSideActivity.AdminHomeActivity
 import com.example.notification_trial02.ClientSideActivities.HomeActivity
 import com.example.notification_trial02.R
 import com.example.notification_trial02.databinding.ActivityAdminLoginBinding
-import com.example.notification_trial02.databinding.ActivityAdminSignupBinding
 import com.example.notification_trial02.modals.User
-import com.example.notification_trial02.modals.UserType
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
@@ -56,14 +54,13 @@ class AdminLoginActivity : AppCompatActivity() {
 
                         val uid = auth.currentUser?.uid.toString()
 
-                        var flag = false
-
+//                        var flag = false
                         GlobalScope.launch(Dispatchers.IO) {
                             db.collection("users").document(uid)
                                 .get()
                                 .addOnSuccessListener {
-//                                    val data = it.toObject(UserType::class.java)
-                                    val data = it
+                                    val data = it.toObject(User::class.java)
+//                                    val data = it
                                     Log.d(TAG, "data from storage is " + data)
 
 //                                    flag = (data == null)

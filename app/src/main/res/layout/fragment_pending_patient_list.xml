@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".adminSideFragments.RecyclerView.PendingPatientList">
+    android:background="@color/white"
+    tools:context=".adminSideFragments.RecyclerView.PendingPatientListFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -2,19 +2,9 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/admin_navigation.xml"
+    android:id="@+id/admin_navigation"
     app:startDestination="@id/adminHomeFragment">
 
-    <fragment
-        android:id="@+id/pretherapyFormDetails"
-        android:name="com.example.notification_trial02.adminSideFragments.PretherapyFormDetails"
-        android:label="fragment_pretherapy_form_details"
-        tools:layout="@layout/fragment_pretherapy_form_details" >
-        <argument
-            android:name="date"
-            app:argType="string"
-            android:defaultValue="null" />
-    </fragment>
     <fragment
         android:id="@+id/adminHomeFragment"
         android:name="com.example.notification_trial02.adminSideFragments.AdminHomeFragment"
@@ -23,14 +13,96 @@
         <action
             android:id="@+id/action_adminHomeFragment_to_pendingPatientList"
             app:destination="@id/pendingPatientList" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_donePatientListFragment"
+            app:destination="@id/donePatientListFragment" />
+        <action
+            android:id="@+id/xml"
+            app:popUpTo="@id/admin_navigation"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_contactFragment"
+            app:destination="@id/contactFragment" />
     </fragment>
     <fragment
         android:id="@+id/pendingPatientList"
-        android:name="com.example.notification_trial02.adminSideFragments.RecyclerView.PendingPatientList"
+        android:name="com.example.notification_trial02.adminSideFragments.RecyclerView.PendingPatientListFragment"
         android:label="fragment_pending_patient_list"
         tools:layout="@layout/fragment_pending_patient_list" >
         <action
-            android:id="@+id/action_pendingPatientList_to_pretherapyFormDetails"
+            android:id="@+id/action_pendingPatientList_to_postTherapyFormFragment"
+            app:destination="@id/postTherapyFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pretherapyFormDetails"
+        android:name="com.example.notification_trial02.adminSideFragments.PretherapyFormDetails"
+        android:label="fragment_pretherapy_form_details"
+        tools:layout="@layout/fragment_pretherapy_form_details" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_pretherapyFormDetails_to_adminHomeFragment"
+            app:popUpTo="@id/adminHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/donePatientListFragment"
+        android:name="com.example.notification_trial02.adminSideFragments.DonePatientRecyclerView.DonePatientListFragment"
+        android:label="fragment_done_patient_list"
+        tools:layout="@layout/fragment_done_patient_list" >
+        <action
+            android:id="@+id/action_donePatientListFragment_to_showPatientPrescription"
+            app:destination="@id/showPatientPrescription" />
+    </fragment>
+    <fragment
+        android:id="@+id/postTherapyFormFragment"
+        android:name="com.example.notification_trial02.adminSideFragments.PostTherapyFormFragment"
+        android:label="fragment_post_therapy_form"
+        tools:layout="@layout/fragment_post_therapy_form" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_postTherapyFormFragment_to_pretherapyFormDetails"
             app:destination="@id/pretherapyFormDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.notification_trial02.generalFragments.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.example.notification_trial02.generalFragments.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" />
+    <fragment
+        android:id="@+id/showPatientPrescription"
+        android:name="com.example.notification_trial02.adminSideFragments.DonePatientRecyclerView.ShowPatientPrescription"
+        android:label="fragment_show_patient_prescription"
+        tools:layout="@layout/fragment_show_patient_prescription" >
+        <action
+            android:id="@+id/action_showPatientPrescription_to_showPatientForm"
+            app:destination="@id/showPatientForm" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/showPatientForm"
+        android:name="com.example.notification_trial02.adminSideFragments.DonePatientRecyclerView.ShowPatientForm"
+        android:label="fragment_show_patient_form"
+        tools:layout="@layout/fragment_show_patient_form" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_showPatientForm_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment"
+            app:popUpTo="@id/adminHomeFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 </navigation>

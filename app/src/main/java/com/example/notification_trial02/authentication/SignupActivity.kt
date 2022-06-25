@@ -17,7 +17,6 @@ import com.example.notification_trial02.adminSideFragments.PretherapyFormDetails
 import com.example.notification_trial02.clientSideFragments.SendNotification
 import com.example.notification_trial02.databinding.ActivitySignupBinding
 import com.example.notification_trial02.modals.User
-import com.example.notification_trial02.modals.UserType
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -85,18 +84,18 @@ class SignupActivity : AppCompatActivity() {
 //                                    }
 //                              }
                         Log.d(TAG, "signed in")
-                        val newUser = User(UserType.CLIENT)
+//                        val newUser = User(UserType.CLIENT)
 
-                        auth.currentUser?.let { user->
-                            db.collection("users").document(user.uid.toString())
-                                .set(newUser)
-                        }
+//                        auth.currentUser?.let { user->
+//                            db.collection("users").document(user.uid.toString())
+//                                .set(newUser)
+//                        }
 
                         if (auth.currentUser == null){
                             Log.d(TAG, "current user is null");
                         }else{
                             Log.d(TAG, "current user not null");
-                            val intent = Intent(this, HomeActivity::class.java)
+                            val intent = Intent(this, HospitalDetailsActivity::class.java)
                             startActivity(intent)
                             finish()
                         }
