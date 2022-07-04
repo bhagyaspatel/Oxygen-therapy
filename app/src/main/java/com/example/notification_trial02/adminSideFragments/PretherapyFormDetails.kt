@@ -8,25 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.notification_trial02.DONE
-import com.example.notification_trial02.FORM
-import com.example.notification_trial02.PENDING
-import com.example.notification_trial02.R
 import com.example.notification_trial02.ViewModal.PateintViewModel
-import com.example.notification_trial02.databinding.FragmentPendingPatientListBinding
 import com.example.notification_trial02.databinding.FragmentPretherapyFormDetailsBinding
 import com.example.notification_trial02.modals.PatientAndHospital
 import com.example.notification_trial02.modals.PatientPreForm
-import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.launch
+import com.example.notification_trial02.modals.Period
+import com.google.firebase.database.FirebaseDatabase
 
 class PretherapyFormDetails : Fragment() {
 
     private lateinit var binding: FragmentPretherapyFormDetailsBinding
     private var patientId: String? = null
     private val TAG = "Form"
+//    private val dbRef = FirebaseDatabase.getInstance()
 
     var patient: PatientAndHospital? = null
     private lateinit var editTexts: ArrayList<String>
@@ -61,8 +56,18 @@ class PretherapyFormDetails : Fragment() {
             binding.deliverySystem.visibility = View.GONE
         }
 
+        binding.others.setOnClickListener {
+            Log.d(TAG, "other comorbidities clicked")
+            if (binding.others.isChecked)
+                binding.otherComorbidities.visibility = View.VISIBLE
+            else
+                binding.otherComorbidities.visibility = View.GONE
+        }
+
         binding.savePatientBtn.setOnClickListener {
             Log.d(TAG, "onViewCreated: save btn clicked -> current patient is " + patient)
+
+
             viewModel.getPatientFromPendingList(patientId.toString())
             viewModel.patient.observe(viewLifecycleOwner) {
                 patient = it
@@ -136,22 +141,54 @@ class PretherapyFormDetails : Fragment() {
             system = binding.etDeliverySystem.text.toString()
         }
 
+        val flowRateRecommended = binding.flowRateRecommended.text.toString()
+        val flowRateGiven = binding.flowRateGiven.text.toString()
+
+        var monitor : Period = Period.Min15
+        if (binding.min30.isChecked)
+            monitor = Period.Min30
+        else if (binding.hourly.isChecked)
+            monitor = Period.HOURLY
+        else if (binding.hourly2.isChecked)
+            monitor = Period.HOURLY2
+        else if (binding.otherPeriod.isChecked)
+            monitor = Period.OTHER
+
+        val otherPeriod = binding.otherPeriod.text.toString()
+
+        val targetOxygen = binding.targetOxygenRec.text.toString()
+        val oxygenTime = binding.oxygenTime.text.toString()
+        val oxygenDate = binding.oxygenDate.text.toString()
+
+        val etTargetAchieveTime = binding.etTargetAchieveTime.text.toString()
+        val mews = binding.etMews.text.toString()
+
+        var mewsRec = true
+        if (!binding.mewsYes.isChecked)
+            mewsRec = false
+
+        val oxygenOffTime = binding.oxygenOffTime.text.toString()
+        val oxygenOffDate = binding.oxygenOffDate.text.toString()
+        val weaningTime = binding.weaningTime.text.toString()
+        val weaningDate = binding.weaningDate.text.toString()
+        val complicatin = binding.etComplication.text.toString()
+
         val preForm = PatientPreForm(
             rsn,
             prescreption,
             comorbidities,
             risk,
             saturation,
-            hr,
-            bp,
-            spo2,
-            rr,
-            ph,
-            pco2,
-            po2,
-            hco3,
-            lactate,
-            system
+            hr, bp, spo2, rr, ph, pco2, po2, hco3, lactate,
+            system,
+            flowRateRecommended, flowRateGiven,
+            monitor, otherPeriod,
+            targetOxygen, oxygenTime, oxygenDate,
+            etTargetAchieveTime,
+            mews, mewsRec,
+            oxygenOffTime, oxygenOffDate,
+            weaningTime, weaningDate,
+            complicatin
         )
         savePatientPreForm(preForm)
     }
@@ -187,7 +224,19 @@ class PretherapyFormDetails : Fragment() {
             binding.ph.text.toString(),
             binding.pco2.text.toString(),
             binding.po2.text.toString(),
-            binding.hco3.text.toString()
+            binding.hco3.text.toString(),
+            binding.flowRateRecommended.text.toString(),
+            binding.flowRateGiven.text.toString(),
+            binding.targetOxygenRec.text.toString(),
+            binding.oxygenTime.text.toString(),
+            binding.oxygenDate.text.toString(),
+            binding.etTargetAchieveTime.text.toString(),
+            binding.etMews.text.toString(),
+            binding.weaningTime.text.toString(),
+            binding.weaningDate.text.toString(),
+            binding.oxygenOffDate.text.toString(),
+            binding.oxygenOffTime.text.toString(),
+            binding.etComplication.text.toString(),
         )
 
         var flag = true
@@ -200,6 +249,9 @@ class PretherapyFormDetails : Fragment() {
             }
             Log.d(TAG, "outside for each")
         }
+
+        if (binding.otherPeriod.isChecked && binding.etMonitorOther.text.isNullOrBlank() )
+            flag= false
 
         if (binding.deliveryYes.isChecked && binding.etDeliverySystem.text.isNullOrBlank())
             flag = false

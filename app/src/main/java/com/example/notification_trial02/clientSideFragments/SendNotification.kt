@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
@@ -27,10 +28,6 @@ import org.json.JSONObject
 class SendNotification : Fragment() {
 
     private lateinit var binding : FragmentSendNotificationBinding
-//    private val token = "eqn1jMYEQ1eVP2p9wSMi0w:APA91bFz5KpUeaEDyhdeFM3kvxyNNZkB8ceBkKOtiLhcrjUhvtEkcmMeG7LGLhO37koigo0HWdiezK9-Rc0OxqQEyqcqVQ82eZXlJP8g5BCdO03sWh5VKoLc3RyVjLjgvEEqZrohNW9_"
-//    private val token2 = "doBcozDpSPWEEjKI9zQNd7:APA91bHRLGtmzoC-H_9qh7U_ciJpIdo3bqD1XlNCKYMvX_kZvsPpqzBkYtZILcejm1RWpClV27-SssTgLhNPgfzzPiUu-QiWUBTLQ8P4X4nmIPcLxV0YgfT9dkkX2OH6KkE-iZUeu3lH"
-//    private val token3 = "cMLrdC6ZT2CVf6pWN7kzBO:APA91bGga1e0FQmnDpp8SRcKfcGELhpRry6iJUwTKkfIJS6fAmNJ9SMEPndv3KQyyPn85sCQigKrMtR4JN-QLwHAlRBNs8oWSm7BNaGYVhY4dK1bjilpOiPlIRcrehUFKWevFTRDA7og"
-    //token specifies the device to whome we are sending the notification : admin side token
 
     private val TAG = "Send_notification_message"
     private val FCM_API = "https://fcm.googleapis.com/fcm/send"
@@ -85,9 +82,17 @@ class SendNotification : Fragment() {
                 binding.sexLabel.helperText = validSex()
         }
 
-        binding.btn.setOnClickListener {
+        binding.etNumber.setOnFocusChangeListener { view, focus ->
+            if (!focus)
+                binding.hospitalNumLabel.helperText = validNumber()
+        }
+
+        binding.sendNotificationbtn.setOnClickListener {
             Log.d(TAG, "Send Btn pressed")
             submitDetail()
+            findNavController().navigate(
+                SendNotificationDirections.actionSendNotificationToClientHomeFragment()
+            )
         }
     }
 
@@ -95,25 +100,30 @@ class SendNotification : Fragment() {
         val validName = binding.nameLabel.helperText == null
         val validAge = binding.ageLabel.helperText == null
         val validPhone = binding.sexLabel.helperText == null
+        val validNumber = binding.hospitalNumLabel.helperText == null
 
-        if (validName && validAge && validPhone){
+        if (validName && validAge && validPhone && validNumber){
             Log.d(TAG, "All details variifed")
 
             val sex = binding.etSex.text.toString()
             val age = binding.etAge.text.toString()
             val name = binding.etName.text.toString()
-            val hospitalNumber = user.hospitalNumber
+            val hospitalNumber = binding.etNumber.text.toString()
+
             val area = user.area
 
             AlertDialog.Builder(requireContext())
                 .setTitle("Are you sure?")
                 .setMessage("Click OK to send the alert for oxygen therapy")
                 .setPositiveButton("OK"){ dialog, _ ->
-                    if (hospitalNumber != null && area != null){
+                    if (area != null){
                         createNotificationObject(name, age, sex, hospitalNumber, area)
                     }else{
                         Log.d(TAG, "submitDetail: hospitalNumber and area is null")
                     }
+                }
+                .setNegativeButton("Cancel"){dialog, _ ->
+                    dialog.cancel()
                 }
                 .show()
         }else{
@@ -142,6 +152,14 @@ class SendNotification : Fragment() {
 
         if (name.isEmpty())
             return "Please provide patient's name"
+        return null
+    }
+
+    private fun validNumber(): CharSequence? {
+        val num = binding.etNumber.text.toString()
+
+        if (num.isEmpty())
+            return "Please provide hospital number"
         return null
     }
 

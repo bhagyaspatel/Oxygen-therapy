@@ -6,24 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.notification_trial02.DONE
-import com.example.notification_trial02.FORM
-import com.example.notification_trial02.PENDING
-import com.example.notification_trial02.R
+import com.example.notification_trial02.Utils.NetworkResponse
 import com.example.notification_trial02.ViewModal.PateintViewModel
-import com.example.notification_trial02.adminSideFragments.RecyclerView.PendingPatientListFragmentDirections
-import com.example.notification_trial02.adminSideFragments.RecyclerView.patientAdapter
 import com.example.notification_trial02.databinding.FragmentDonePatientListBinding
-import com.example.notification_trial02.databinding.FragmentPendingPatientListBinding
 import com.example.notification_trial02.modals.PatientAndHospital
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.launch
 
 class DonePatientListFragment : Fragment() {
 
@@ -52,6 +42,24 @@ class DonePatientListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG, "onViewCreated")
+
+        viewModel.patientListResponse.observe(viewLifecycleOwner){ response ->
+            when(response){
+                is NetworkResponse.Loading -> {
+                    binding.progressbar.visibility = View.VISIBLE
+                    binding.donePatientRV.visibility = View.GONE
+                }
+                is NetworkResponse.Success -> {
+                    binding.progressbar.visibility = View.GONE
+                    binding.donePatientRV.visibility = View.VISIBLE
+                }
+                else -> {
+                    binding.errMsg.visibility = View.VISIBLE
+                    binding.errorImg.visibility = View.VISIBLE
+                }
+            }
+        }
+
 
         viewModel.getAllDonePatient()
         viewModel.patientList.observe(viewLifecycleOwner){

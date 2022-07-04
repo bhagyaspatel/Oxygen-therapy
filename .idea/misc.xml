@@ -41,8 +41,8 @@
         <entry key="app/src/main/res/layout/fragment_pretherapy_form_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_pretherapy_forn_details.xml" value="0.13677811550151975" />
         <entry key="app/src/main/res/layout/fragment_send_notification.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_show_patient_form.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_show_patient_prescription.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_show_patient_form.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_show_patient_prescription.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.14336372847011145" />
         <entry key="app/src/main/res/layout/nav_header_admin_navigation.xml" value="0.375" />
         <entry key="app/src/main/res/layout/notification.xml" value="0.25" />

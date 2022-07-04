@@ -19,7 +19,7 @@
         android:checkableBehavior="none">
         <item
             android:id="@+id/signoutBtn"
-            android:title="Sign Out"
+            android:title="Log Out"
             android:icon="@drawable/ic_logout"/>
     </group>
 

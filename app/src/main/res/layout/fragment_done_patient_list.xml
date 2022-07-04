@@ -2,8 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".adminSideFragments.DonePatientRecyclerView.DonePatientListFragment">
 
@@ -33,26 +32,48 @@
             android:background="@color/darker_app_green"
             android:layout_gravity="center"/>
 
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/_16sdp"
             android:layout_height="match_parent">
 
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_150sdp"/>
+
+            <TextView
+                android:id="@+id/errMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fetching_error_msg"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/arbutus"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:textColor="@color/error_red"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/errorImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/error_pic"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:visibility="gone"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/donePatientRV"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:listitem="@layout/done_patient_view"/>
-
-            <ProgressBar
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
                 android:visibility="visible"
-                android:layout_gravity="center"
-                android:layout_centerInParent="true"/>
-
+                tools:listitem="@layout/done_patient_view" />
         </RelativeLayout>
-
     </LinearLayout>
 
 </FrameLayout>

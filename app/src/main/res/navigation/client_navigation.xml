@@ -24,7 +24,13 @@
         android:id="@+id/sendNotification"
         android:name="com.example.notification_trial02.clientSideFragments.SendNotification"
         android:label="fragment_send_notification"
-        tools:layout="@layout/fragment_send_notification" />
+        tools:layout="@layout/fragment_send_notification" >
+        <action
+            android:id="@+id/action_sendNotification_to_clientHomeFragment"
+            app:destination="@id/clientHomeFragment"
+            app:popUpTo="@id/client_navigation"
+            app:popUpToInclusive="false" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment2"
         android:name="com.example.notification_trial02.generalFragments.AboutFragment"

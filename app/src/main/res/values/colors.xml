@@ -24,7 +24,9 @@
     <color name="gradientDark">#eec0c6</color>
 <!--    <color name="bluish_app_green">#016170</color>-->
     <color name="danger_red">#E61A1A</color>
-    <color name="notification">#FFC9A5</color>
+    <color name="notification">#B1AAA5</color>
     <color name="colorBlue">#318BDA</color>
     <color name="gray">#8F979E</color>
+    <color name="error_red">#E1DF2E2E</color>
+
 </resources>

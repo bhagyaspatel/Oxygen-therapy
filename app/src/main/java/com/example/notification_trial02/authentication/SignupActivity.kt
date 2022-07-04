@@ -9,14 +9,7 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import com.example.notification_trial02.ClientSideActivities.HomeActivity
-import com.example.notification_trial02.MainActivity
-import com.example.notification_trial02.R
-import com.example.notification_trial02.adminSideFragments.PretherapyFormDetails
-import com.example.notification_trial02.clientSideFragments.SendNotification
 import com.example.notification_trial02.databinding.ActivitySignupBinding
-import com.example.notification_trial02.modals.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -24,7 +17,6 @@ class SignupActivity : AppCompatActivity() {
 
     private val TAG = "Signup"
     lateinit var binding: ActivitySignupBinding
-    private var db = FirebaseFirestore.getInstance()
     private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,57 +58,25 @@ class SignupActivity : AppCompatActivity() {
             val confirmPassword = binding.etConfirmPassword.text.toString()
 
             if (validate(email, password, confirmPassword)) {
-                auth.createUserWithEmailAndPassword(email, password)
-                    .addOnSuccessListener {
-//                           auth.currentUser?.sendEmailVerification()
-//                                ?.addOnCompleteListener { task ->
-//                                    if (task.isSuccessful) {
-//                                        Toast.makeText(
-//                                            this,
-//                                            "User registered successfully please verify your email-id",
-//                                            Toast.LENGTH_SHORT
-//                                        ).show()
-//                                    } else {
-//                                        Log.d(
-//                                            TAG,
-//                                            "task unsuccessful " + task.exception?.message.toString()
-//                                        )
-//                                    }
-//                              }
-                        Log.d(TAG, "signed in")
-//                        val newUser = User(UserType.CLIENT)
-
-//                        auth.currentUser?.let { user->
-//                            db.collection("users").document(user.uid.toString())
-//                                .set(newUser)
-//                        }
-
-                        if (auth.currentUser == null){
-                            Log.d(TAG, "current user is null");
-                        }else{
-                            Log.d(TAG, "current user not null");
-                            val intent = Intent(this, HospitalDetailsActivity::class.java)
-                            startActivity(intent)
-                            finish()
-                        }
-                    }
-                    .addOnFailureListener {
-                        Toast.makeText(this, "The email address is already in use by another account.", Toast.LENGTH_SHORT).show()
-                        Log.e(TAG, "onCreate: ${it.message}",)
-                    }
-                }
+                Toast.makeText(this, "Provide the hospitals' necessary details to complete the sign up", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, HospitalDetailsActivity::class.java)
+                intent.putExtra("email", email)
+                intent.putExtra("password", password)
+                startActivity(intent)
+                finish()
+            }
 //          }
         }
 
     }
 
-    private fun addFragmentToActivity(supportFragmentManager: FragmentManager, fragment: Fragment?, frameId: Int) {
-        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        if (fragment != null) {
-            transaction.add(frameId, fragment)
-        }
-        transaction.commit()
-    }
+//    private fun addFragmentToActivity(supportFragmentManager: FragmentManager, fragment: Fragment?, frameId: Int) {
+//        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+//        if (fragment != null) {
+//            transaction.add(frameId, fragment)
+//        }
+//        transaction.commit()
+//    }
 
 
     private fun validate(email: String, password: String, confirmPassword: String): Boolean {

@@ -6,23 +6,10 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import com.example.notification_trial02.AdminSideActivity.AdminHomeActivity
 import com.example.notification_trial02.ClientSideActivities.HomeActivity
-import com.example.notification_trial02.MainActivity
-import com.example.notification_trial02.R
-import com.example.notification_trial02.USER
-import com.example.notification_trial02.adminSideFragments.PretherapyFormDetails
-import com.example.notification_trial02.clientSideFragments.SendNotification
 import com.example.notification_trial02.databinding.ActivityLoginBinding
-import com.example.notification_trial02.modals.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
     private val TAG = "Login"
@@ -62,45 +49,44 @@ class LoginActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) {
                         if (it.isSuccessful){
                             val uid = auth.currentUser?.uid.toString()
+//                            val documentId = CLIENT + uid
 
-                            GlobalScope.launch(Dispatchers.IO) {
-                                db.collection(USER).document(uid)
-                                    .get()
-                                    .addOnSuccessListener{
-                                        val data = it.toObject(User::class.java)
-                                        Log.d(TAG, "data from storage is " + data)
+                            val intent =
+                                Intent(this@LoginActivity, HomeActivity::class.java)
+                            startActivity(intent)
+                            finish()
 
-                                        if (data == null){
-                                            Log.d(TAG, "if data is null..")
-                                            Toast.makeText(this@LoginActivity, "Please login through admin portal", Toast.LENGTH_SHORT).show()
-                                        }else{
-                                            Log.d(TAG, "if data is not null..")
-                                            val intent =
-                                                Intent(this@LoginActivity, HomeActivity::class.java)
-                                            startActivity(intent)
-                                            finish()
-                                        }
-                                    }
-                                    .addOnFailureListener { exception ->
-                                        val intent =
-                                            Intent(this@LoginActivity , HomeActivity::class.java)
-                                        startActivity(intent)
-                                        finish()
-                                    }
-
-//                                launch(Dispatchers.Main) {
-//                                    if (type == UserType.ADMIN){
-//                                        Toast.makeText(this@LoginActivity, "Please login through Admin portal from right upper corner", Toast.LENGTH_SHORT).show()
+//                            GlobalScope.launch(Dispatchers.IO) {
+//                                db.collection(USER).document(uid)
+//                                    .get()
+//                                    .addOnSuccessListener{
+//                                        val data = it.toObject(User::class.java)
+//                                        Log.d(TAG, "data from storage is " + data)
+//
+//                                        if (data == null && (uid.substring(0,5) == CLIENT)){
+//                                            Log.d(TAG, "login me data null matlab hospital detail nahi de rakhi.")
+//                                            Toast.makeText(this@LoginActivity, "Please provide hospital's detail", Toast.LENGTH_SHORT).show()
+//                                            val intent =
+//                                                Intent(this@LoginActivity, HospitalDetailsActivity::class.java)
+//                                            startActivity(intent)
+//                                            finish()
+//                                        }
+//                                        else if (data == null && (uid.substring(0,5) != CLIENT)){
+//                                            Log.d(TAG, "this is the admin.")
+//                                            Toast.makeText(this@LoginActivity, "Please login through admin portal", Toast.LENGTH_SHORT).show()
+//                                        }
+//                                        else{
+//                                            Log.d(TAG, "login me data not null matlab hospital detail hai")
+//                                            val intent =
+//                                                Intent(this@LoginActivity, HomeActivity::class.java)
+//                                            startActivity(intent)
+//                                            finish()
+//                                        }
 //                                    }
-//                                    else{
-//                                        Log.d(TAG, "Email and pass varified")
-//                                        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-//                                        startActivity(intent)
-//                                        finish()
+//                                    .addOnFailureListener { exception ->
+//                                        Toast.makeText(this@LoginActivity, "Log in failed", Toast.LENGTH_SHORT).show()
 //                                    }
-//                                }
-
-                            }
+//                            }
                         }
                         else{
                             Toast.makeText(this, "Log in failed", Toast.LENGTH_SHORT).show()

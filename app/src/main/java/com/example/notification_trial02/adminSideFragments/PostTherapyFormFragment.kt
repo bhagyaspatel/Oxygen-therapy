@@ -72,7 +72,6 @@ class PostTherapyFormFragment : Fragment() {
 
                 val prescription = Prescription (rsn , system, flow, humidification,saturation,weaning,doctorName,designation,kmc)
 
-                //TODO : DONE ; save this prescription in DONE list with collection "prescription"
                  viewModel.setPatientPrescription(prescription, patientId.toString())
 
                 findNavController().navigate(

@@ -16,6 +16,7 @@ import android.widget.RemoteViews
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import com.example.notification_trial02.modals.PatientAndHospital
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
@@ -29,6 +30,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     private val ADMIN_CHANNEL_ID = "admin_channel"
     private val TAG = "NotificationTAG"
+    private var dbRef = FirebaseDatabase.getInstance()
 
     private var db = FirebaseFirestore.getInstance()
 
@@ -115,14 +117,13 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     @SuppressLint("SimpleDateFormat")
     private fun storePatient(name: String, age: String, sex: String, hospitalNumber : String, area : String) {
-        val currentTime = LocalDateTime.now().toString()
-        val dateFormater = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")
-        val formatedDate = currentTime.format(dateFormater)
 
-        val timeStamp : String = SimpleDateFormat ("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+        val sdf = SimpleDateFormat("dd.MM.yyyy 'at' HH:mm:ss")
+        val currentDateandTime = sdf.format(Date())
+
         val id : String = UUID.randomUUID().toString().replace("-", "").uppercase(Locale.getDefault())
 
-        val patient = PatientAndHospital(name, age.toInt(), sex, timeStamp,area, hospitalNumber, id)
+        val patient = PatientAndHospital(name, age.toInt(), sex, currentDateandTime,area, hospitalNumber, id)
 
         db.collection(PENDING).document(id).set(patient)
             .addOnSuccessListener {
@@ -132,6 +133,14 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             .addOnFailureListener {
                 Log.d(TAG, it.message!!)
             }
+//        val ref = dbRef.getReference(PENDING_PATIENT_LIST).push()
+//
+//        ref.setValue(patient).addOnSuccessListener {
+//            Toast.makeText(this, "New patient added to the pending list", Toast.LENGTH_SHORT).show()
+//        }
+//            .addOnFailureListener{
+//                Toast.makeText(this, "Failed to store details of a patient in pending list.", Toast.LENGTH_SHORT).show()
+//            }
     }
 
     private fun getRemoteView(title: String?, message: String?): RemoteViews? {

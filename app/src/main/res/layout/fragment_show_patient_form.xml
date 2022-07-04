@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,9 +8,15 @@
     android:background="@color/white"
     tools:context=".adminSideFragments.DonePatientRecyclerView.ShowPatientForm">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <LinearLayout
+        android:id="@+id/formView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:orientation="vertical">
 
         <TextView
@@ -273,7 +279,6 @@
                         <TextView
                             android:id="@+id/hr"
                             android:textColor="@color/black"
-                            android:inputType="numberDecimal"
                             android:layout_width="@dimen/_60sdp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_height="wrap_content"/>
@@ -294,7 +299,6 @@
                         <TextView
                             android:id="@+id/bp"
                             android:textColor="@color/black"
-                            android:inputType="numberDecimal"
                             android:layout_width="@dimen/_60sdp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_height="wrap_content"/>
@@ -322,7 +326,6 @@
                         <TextView
                             android:id="@+id/spo2"
                             android:textColor="@color/black"
-                            android:inputType="numberDecimal"
                             android:layout_width="@dimen/_60sdp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_height="wrap_content"/>
@@ -343,7 +346,6 @@
                         <TextView
                             android:id="@+id/rr"
                             android:textColor="@color/black"
-                            android:inputType="numberDecimal"
                             android:layout_width="@dimen/_60sdp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_height="wrap_content"/>
@@ -392,7 +394,6 @@
                         <TextView
                             android:id="@+id/ph"
                             android:textColor="@color/black"
-                            android:inputType="numberDecimal"
                             android:layout_width="@dimen/_60sdp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_height="wrap_content"/>
@@ -413,7 +414,6 @@
                         <TextView
                             android:id="@+id/pco2"
                             android:textColor="@color/black"
-                            android:inputType="numberDecimal"
                             android:layout_width="@dimen/_60sdp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_height="wrap_content"/>
@@ -440,7 +440,6 @@
 
                         <TextView
                             android:id="@+id/po2"
-                            android:inputType="numberDecimal"
                             android:layout_width="@dimen/_60sdp"
                             android:textColor="@color/black"
                             android:layout_marginStart="@dimen/_5sdp"
@@ -464,8 +463,7 @@
                             android:layout_width="@dimen/_60sdp"
                             android:textColor="@color/black"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_height="wrap_content"
-                            android:inputType="numberDecimal" />
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -516,7 +514,296 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/flow_rate_recommended"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <TextView
+                android:id="@+id/flowRateRecommended"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/flow_rate_given"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <TextView
+                android:id="@+id/flowRateGiven"
+                android:textColor="@color/black"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="L/min"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/monitoring_recomended"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <TextView
+                android:id="@+id/monitoring"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/target_oxygen_recommended"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <TextView
+                android:id="@+id/targetOxygenRec"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_oxygen_started"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/_12sdp" />
+                <TextView
+                    android:id="@+id/oxygenStartedTime"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/_12sdp" />
+                <TextView
+                    android:id="@+id/oxygenStartedDate"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_to_achieve_target"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <TextView
+                android:id="@+id/targetAchiveTime"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mews"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <TextView
+                android:id="@+id/mews"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mews_trigger_initiated"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <TextView
+                android:id="@+id/mewsYesNo"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/weaning_start_time"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/_12sdp" />
+                <TextView
+                    android:id="@+id/weaningDate"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/_12sdp" />
+                <TextView
+                    android:id="@+id/weaningTime"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/oxygen_off_time"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/_12sdp" />
+                <TextView
+                    android:id="@+id/oxygenOffTime"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/_12sdp" />
+                <TextView
+                    android:id="@+id/oxygenOffDate"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/complication"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <TextView
+                android:id="@+id/complication"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/closeBtn"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
@@ -528,6 +815,33 @@
             android:layout_marginTop="@dimen/_20sdp" />
     </LinearLayout>
 
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_500sdp"
+            android:visibility="visible" />
 
+        <TextView
+            android:id="@+id/errMsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fetching_error_msg"
+            android:textSize="@dimen/_15sdp"
+            android:fontFamily="@font/arbutus"
+            android:textColor="@color/error_red"
+            android:visibility="gone"/>
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/errorImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/error_pic"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</ScrollView>

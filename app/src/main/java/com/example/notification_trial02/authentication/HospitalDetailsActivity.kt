@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.navigation.findNavController
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.notification_trial02.ClientSideActivities.HomeActivity
-import com.example.notification_trial02.USER
+import com.example.notification_trial02.ViewModal.PateintViewModel
 import com.example.notification_trial02.databinding.ActivityHospitalDetailsBinding
-import com.example.notification_trial02.databinding.ActivityHospitalDetailsBinding.inflate
 import com.example.notification_trial02.modals.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,7 +19,13 @@ class HospitalDetailsActivity : AppCompatActivity() {
     lateinit var binding: ActivityHospitalDetailsBinding
     private val TAG = "Hospital_Detail"
     private var auth = FirebaseAuth.getInstance()
-    private var db = FirebaseFirestore.getInstance()
+
+    private val viewModel by lazy {
+        ViewModelProvider(
+            this,
+            ViewModelProvider.AndroidViewModelFactory.getInstance(application)
+        ).get(PateintViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,13 +44,9 @@ class HospitalDetailsActivity : AppCompatActivity() {
                 binding.areaLabel.helperText = validArea()
         }
 
-        binding.etNumber.setOnFocusChangeListener { view, focus ->
-            if (!focus)
-                binding.hospitalNumLabel.helperText = validNumber()
-        }
-
         binding.saveBtn.setOnClickListener{
             Log.d(TAG, "Save Btn pressed")
+//            TODO() : ADD progress bar here
             submitDetail()
         }
     }
@@ -52,41 +54,49 @@ class HospitalDetailsActivity : AppCompatActivity() {
     private fun submitDetail() {
         val validName = binding.nameLabel.helperText == null
         val validArea = binding.areaLabel.helperText == null
-        val validNumber = binding.hospitalNumLabel.helperText == null
 
-        if (validName && validArea && validNumber) {
-            Log.d(TAG, "All details variifed")
+        if (validName && validArea) {
+            Toast.makeText(this, "Please wait", Toast.LENGTH_SHORT).show()
+            binding.saveBtn.isClickable = false
+            Log.d(TAG, "All details varified")
 
             val name = binding.etName.text.toString()
             val area = binding.etArea.text.toString()
-            val number = binding.etNumber.text.toString()
 
             //TODO : Save this details to the db and navigate to HomeActivity
-            val newUser = User(name, number, area)
+            val newUser = User(name,area)
 
-            auth.currentUser?.let { user->
-                db.collection(USER).document(user.uid.toString())
-                    .set(newUser)
-                    .addOnSuccessListener {
-                        Toast.makeText(this, "Details saved successfully", Toast.LENGTH_SHORT).show()
+            val email = intent.getStringExtra("email")
+            val password = intent.getStringExtra("password")
 
-                        val intent = Intent(this, HomeActivity::class.java)
-                        startActivity(intent)
-                        finish()
+            Log.d(TAG, "submitDetail: the pawd and email from intent is $password , $email")
+
+            auth.createUserWithEmailAndPassword(email!!, password!!)
+                .addOnSuccessListener {
+                    Log.d(TAG, "signed in")
+                    if (auth.currentUser == null){
+                        Log.d(TAG, "current user is null");
+                    }else{
+                        Log.d(TAG, "current user not null");
+                        viewModel.saveUser(newUser, auth.currentUser!!.uid)
+                        viewModel.flag.observe(this, Observer{
+                            Log.d(TAG, "submitDetail: live flag is $it")
+                            if (it == true){
+                                val intent = Intent(this, HomeActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+                        })
                     }
-                    .addOnFailureListener{
-                        Toast.makeText(this, "Error occurred while saving the details", Toast.LENGTH_SHORT).show()
-                    }
-            }
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "The email address is already in use by another account.", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, SignupActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    Log.e(TAG, "onCreate: ${it.message}",)
+                }
         }
-    }
-
-    private fun validNumber(): CharSequence? {
-        val num = binding.etNumber.text.toString()
-
-        if (num.isEmpty())
-            return "Please provide hospital number"
-        return null
     }
 
     private fun validArea(): CharSequence? {

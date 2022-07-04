@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.notification_trial02.R
+import com.example.notification_trial02.Utils.NetworkResponse
 import com.example.notification_trial02.ViewModal.PateintViewModel
 import com.example.notification_trial02.adminSideFragments.PostTherapyFormFragmentArgs
 import com.example.notification_trial02.databinding.FragmentDonePatientListBinding
@@ -44,6 +45,23 @@ class ShowPatientPrescription : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         patientId = ShowPatientPrescriptionArgs.fromBundle(requireArguments()).id
+
+        viewModel.patientPrescriptionResponse.observe(viewLifecycleOwner){ response ->
+            when(response){
+                is NetworkResponse.Loading -> {
+                    binding.progressbar.visibility = View.VISIBLE
+                    binding.prescriptionVeiw.visibility = View.GONE
+                }
+                is NetworkResponse.Success -> {
+                    binding.progressbar.visibility = View.GONE
+                    binding.prescriptionVeiw.visibility = View.VISIBLE
+                }
+                else -> {
+                    binding.errMsg.visibility = View.VISIBLE
+                    binding.errorImg.visibility = View.VISIBLE
+                }
+            }
+        }
 
         viewModel.getPatientPrescription(patientId.toString())
         viewModel.patientPrescription.observe(viewLifecycleOwner){

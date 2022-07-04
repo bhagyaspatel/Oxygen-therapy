@@ -1,18 +1,19 @@
 package com.example.notification_trial02.ViewModal
 
 import android.app.Application
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.notification_trial02.DONE
-import com.example.notification_trial02.FORM
-import com.example.notification_trial02.PENDING
-import com.example.notification_trial02.PRESCRIPTION
+import com.example.notification_trial02.*
+import com.example.notification_trial02.ClientSideActivities.HomeActivity
+import com.example.notification_trial02.Utils.NetworkResponse
 import com.example.notification_trial02.modals.PatientAndHospital
 import com.example.notification_trial02.modals.PatientPreForm
 import com.example.notification_trial02.modals.Prescription
+import com.example.notification_trial02.modals.User
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 import kotlin.math.log
@@ -32,7 +33,15 @@ class PateintViewModel(applicaation: Application) : AndroidViewModel(applicaatio
 
     var patientPrescription = MutableLiveData<Prescription>()
 
+    var flag = MutableLiveData<Boolean>()
+
+    var patientListResponse: MutableLiveData<NetworkResponse<PatientAndHospital>> = MutableLiveData()
+    var patientPrescriptionResponse: MutableLiveData<NetworkResponse<Prescription>> = MutableLiveData()
+    var patientPreFormResponse: MutableLiveData<NetworkResponse<PatientPreForm>> = MutableLiveData()
+
     fun getPatientPreForm(patientId: String) {
+        patientPreFormResponse.value = NetworkResponse.Loading()
+
         viewModelScope.launch {
             db.collection(DONE).document(patientId)
                 .collection(FORM).document(patientId)
@@ -40,10 +49,12 @@ class PateintViewModel(applicaation: Application) : AndroidViewModel(applicaatio
                 .addOnSuccessListener { document ->
                     val form = document.toObject(PatientPreForm::class.java)
                     patientForm.postValue(form)
+                    patientPreFormResponse.value = NetworkResponse.Success()
                     Log.d(TAG, "saved patient form is ${form.toString()}")
                     Log.d(TAG, "saved patient live form is ${patientForm}")
                 }
                 .addOnFailureListener { exception ->
+                    patientPreFormResponse.value = NetworkResponse.Failure(exception.toString())
                     Log.d(TAG, "Error getting documents: ", exception)
                 }
         }
@@ -51,6 +62,8 @@ class PateintViewModel(applicaation: Application) : AndroidViewModel(applicaatio
 
     //TODO : made new function for getting prescription
     fun getPatientPrescription(patientId: String) {
+        patientPrescriptionResponse.value = NetworkResponse.Loading()
+
         viewModelScope.launch {
             db.collection(DONE).document(patientId)
                 .collection(PRESCRIPTION).document(patientId)
@@ -58,10 +71,12 @@ class PateintViewModel(applicaation: Application) : AndroidViewModel(applicaatio
                 .addOnSuccessListener { document ->
                     val prescription = document.toObject(Prescription::class.java)
                     patientPrescription.postValue(prescription)
+                    patientPrescriptionResponse.value = NetworkResponse.Success()
                     Log.d(TAG, "saved patient form is ${prescription.toString()}")
                     Log.d(TAG, "saved patient live form is ${patientForm}")
                 }
                 .addOnFailureListener { exception ->
+                    patientPrescriptionResponse.value = NetworkResponse.Failure(exception.toString())
                     Log.d(TAG, "Error getting documents: ", exception)
                 }
         }
@@ -83,6 +98,8 @@ class PateintViewModel(applicaation: Application) : AndroidViewModel(applicaatio
     }
 
     fun getAllPendingPateint(){
+        patientListResponse.value = NetworkResponse.Loading()
+
         viewModelScope.launch {
             db.collection(PENDING)
                 .get()
@@ -101,9 +118,11 @@ class PateintViewModel(applicaation: Application) : AndroidViewModel(applicaatio
 //                    Log.d(TAG, "getAllPendingPateint: after making empty ${patientList.value}")
 
                     patientList.postValue(_patientList)
+                    patientListResponse.value = NetworkResponse.Success()
                     Log.d(TAG, "view Modal : after adding ${patientList.value}")
                 }
                 .addOnFailureListener { exception ->
+                    patientListResponse.value = NetworkResponse.Failure(exception.toString())
                     Log.d(TAG, "Error getting documents: ", exception)
                 }
         }
@@ -111,6 +130,8 @@ class PateintViewModel(applicaation: Application) : AndroidViewModel(applicaatio
 
     //TODO : chack the output
     fun getAllDonePatient() {
+        patientListResponse.value = NetworkResponse.Loading()
+
         Log.d(TAG, "getAllDonePatient: getting all the done patients")
         viewModelScope.launch {
             db.collection(DONE)
@@ -123,8 +144,10 @@ class PateintViewModel(applicaation: Application) : AndroidViewModel(applicaatio
                         _patientList.add(patient)
                     }
                     patientList.postValue(_patientList)
+                    patientListResponse.value = NetworkResponse.Success()
                 }
                 .addOnFailureListener { exception ->
+                    patientListResponse.value = NetworkResponse.Failure(exception.toString())
                     Log.d(TAG, "Error getting documents: ", exception)
                 }
         }
@@ -207,6 +230,21 @@ class PateintViewModel(applicaation: Application) : AndroidViewModel(applicaatio
                 .addOnFailureListener{
                     Log.d(TAG, it.message!!)
                     Log.d(TAG, it.message!!)
+                }
+        }
+    }
+
+    fun saveUser (newUser : User, id : String){
+        viewModelScope.launch {
+            db.collection(USER).document(id)
+                .set(newUser)
+                .addOnSuccessListener {
+                    Toast.makeText(getApplication(), "Details saved successfully", Toast.LENGTH_SHORT).show()
+                    flag.postValue(true)
+                }
+                .addOnFailureListener{
+                    flag.postValue(false)
+                    Toast.makeText(getApplication(), "Error occurred while saving the details", Toast.LENGTH_SHORT).show()
                 }
         }
     }

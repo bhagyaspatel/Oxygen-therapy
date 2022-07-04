@@ -2,6 +2,7 @@ package com.example.notification_trial02.adminSideFragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth
 class AdminHomeFragment : Fragment() {
 
     private lateinit var binding : FragmentAdminHomeBinding
+    private val TAG = "AdminHomeFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -81,6 +83,7 @@ class AdminHomeFragment : Fragment() {
                     auth.addAuthStateListener {
                         if (auth.currentUser == null){ //i.e. user have signed out
                             //this listener is called multiple times so check if we are in right fragment or not
+                            Log.d(TAG, "setupNavigationDrawer: user signed out")
                             val currFragID = findNavController().currentDestination!!.id
                             if (currFragID == R.id.adminHomeFragment){
                                 val intent = Intent(requireContext(), SignupActivity::class.java)

@@ -8,8 +8,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import com.example.notification_trial02.AdminSideActivity.AdminHomeActivity
-import com.example.notification_trial02.ClientSideActivities.HomeActivity
 import com.example.notification_trial02.R
+import com.example.notification_trial02.USER
 import com.example.notification_trial02.databinding.ActivityAdminLoginBinding
 import com.example.notification_trial02.modals.User
 import com.google.firebase.auth.FirebaseAuth
@@ -54,19 +54,15 @@ class AdminLoginActivity : AppCompatActivity() {
 
                         val uid = auth.currentUser?.uid.toString()
 
-//                        var flag = false
                         GlobalScope.launch(Dispatchers.IO) {
-                            db.collection("users").document(uid)
+                            db.collection(USER).document(uid)
                                 .get()
                                 .addOnSuccessListener {
                                     val data = it.toObject(User::class.java)
-//                                    val data = it
                                     Log.d(TAG, "data from storage is " + data)
 
-//                                    flag = (data == null)
                                     if (data == null){
-                                        val intent =
-                                            Intent(this@AdminLoginActivity, AdminHomeActivity::class.java)
+                                        val intent = Intent(this@AdminLoginActivity, AdminHomeActivity::class.java)
                                         startActivity(intent)
                                         finish()
                                     }else{
@@ -76,25 +72,10 @@ class AdminLoginActivity : AppCompatActivity() {
                                 }
                                 .addOnFailureListener { exception ->
                                     Log.d(TAG, "user is client : addOnFailureListener")
-                                    val intent =
-                                        Intent(this@AdminLoginActivity, AdminHomeActivity::class.java)
+                                    val intent = Intent(this@AdminLoginActivity, AdminHomeActivity::class.java)
                                     startActivity(intent)
                                     finish()
                                 }
-
-//                            launch(Dispatchers.Main) {
-//                                Log.d(TAG, "so flag is " + flag.toString())
-//
-//                                if (flag == true){
-//                                    val intent =
-//                                        Intent(this@AdminLoginActivity, AdminHomeActivity::class.java)
-//                                    startActivity(intent)
-//                                    finish()
-//                                }
-//                                else{
-//                                    Toast.makeText(this@AdminLoginActivity, "Please login through client portal", Toast.LENGTH_SHORT).show()
-//                                }
-//                            }
                         }
                     }
                     .addOnFailureListener {
