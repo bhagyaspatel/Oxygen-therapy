@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/patient_detail_card"
+    android:layout_marginBottom="@dimen/_8sdp"
+    android:paddingTop="@dimen/_10sdp"
+    android:paddingBottom="@dimen/_10sdp"
+    android:paddingStart="@dimen/_10sdp"
+    android:paddingEnd="@dimen/_5sdp">
+
+    <TextView
+        android:id="@+id/doneName"
+        android:textColor="@color/darker_app_green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Satish Kumar" />
+
+    <TextView
+        android:id="@+id/doneAge"
+        android:textColor="@color/darker_app_green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/doneName"
+        app:layout_constraintEnd_toEndOf="@+id/doneSex"
+        android:text="20" />
+
+    <TextView
+        android:id="@+id/doneSex"
+        android:layout_width="wrap_content"
+        android:textColor="@color/darker_app_green"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/doneAge"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Male" />
+
+    <ImageButton
+        android:id="@+id/doneDeleteBtn"
+        android:background="@color/lighter_app_green"
+        android:layout_width="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_delete_24"/>
+
+    <TextView
+        android:id="@+id/doneDate"
+        android:layout_width="wrap_content"
+        android:textColor="@color/darker_app_green"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/doneName"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:text="26th june" />
+
+    <TextView
+        android:id="@+id/doneArea"
+        android:layout_width="wrap_content"
+        android:textColor="@color/darker_app_green"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/doneDate"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:text="Mathikere" />
+
+    <TextView
+        android:id="@+id/doneHospitalNum"
+        android:textColor="@color/darker_app_green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/doneArea"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:text="101" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

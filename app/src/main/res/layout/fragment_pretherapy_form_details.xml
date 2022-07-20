@@ -1,47 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="@dimen/_10sdp"
     tools:context=".adminSideFragments.PretherapyFormDetails">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="@dimen/_10sdp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/patientListLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/arbutus"
+            android:gravity="center_horizontal"
+            android:text="@string/pretherapy_form"
+            android:textColor="@color/dark_app_green"
+            android:textSize="@dimen/_26sdp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="180dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:background="@color/darker_app_green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientListLabel" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_40sdp"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_12sdp"
                 android:text="@string/reason_for_oxygen_therapy"
-                android:textColor="@color/text_black"/>
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
 
-            <TextView
-                android:id="@+id/textView2"
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/rsn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_12sdp"
-                android:text="@string/lorem_ipsum" />
+                android:layout_marginStart="@dimen/_5sdp"
+                android:backgroundTint="@color/darker_app_green"
+                android:singleLine="false"
+                android:textColor="@color/black" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_12sdp"
                 android:text="@string/oxygen_prescription"
-                android:textColor="@color/text_black"/>
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
 
             <RadioGroup
                 android:id="@+id/radioGroupOxygenPres"
@@ -49,197 +81,142 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:orientation="horizontal">
+
                 <RadioButton
+                    android:id="@+id/presYes"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="25dp"
-                    android:text="Yes" />
+                    android:checked="true"
+                    android:text="Yes"
+                    android:textColor="@color/black" />
+
                 <RadioButton
+                    android:id="@+id/presNo"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="25dp"
-                    android:text="No" />
+                    android:text="No"
+                    android:textColor="@color/black" />
             </RadioGroup>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/_12sdp"
-                android:text="@string/comorbidities"
-                android:textColor="@color/text_black"/>
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="@dimen/_150sdp"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:spinnerMode="dropdown"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/_12sdp"
-                android:text="@string/risk_of_type_2_failure"
-                android:textColor="@color/text_black"/>
-
-            <RadioGroup
-                android:id="@+id/radioGroupRisk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:layout_width="@dimen/_50sdp"
-                    android:layout_height="25dp"
-                    android:text="Yes" />
-                <RadioButton
-                    android:layout_width="@dimen/_50sdp"
-                    android:layout_height="25dp"
-                    android:text="No" />
-            </RadioGroup>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/_12sdp"
-                android:text="@string/target_saturation"
-                android:textColor="@color/text_black"/>
-
-            <RadioGroup
-                android:id="@+id/radioGroupSaturation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:layout_width="@dimen/_80sdp"
-                    android:layout_height="25dp"
-                    android:text="88-92 %" />
-                <RadioButton
-                    android:layout_width="@dimen/_80sdp"
-                    android:layout_height="25dp"
-                    android:text="94-98 %" />
-            </RadioGroup>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_12sdp"
-                android:text="@string/baseline_parameters"
-                android:textColor="@color/text_black"/>
+                android:text="@string/comorbidities"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:orientation="horizontal">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+
+                    <CheckBox
+                        android:id="@+id/dm"
+                        android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:layout_weight="1"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_12sdp"
-                            android:text="HR-"
-                            android:textColor="@color/text_black"/>
+                        android:spinnerMode="dropdown"
+                        android:text="DM"
+                        android:textColor="@color/black" />
 
-                        <EditText
-                            android:layout_width="@dimen/_60sdp"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+                    <CheckBox
+                        android:id="@+id/htn"
+                        android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:layout_weight="1"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_12sdp"
-                            android:text="BP-"
-                            android:textColor="@color/text_black"/>
+                        android:spinnerMode="dropdown"
+                        android:text="HTN"
+                        android:textColor="@color/black"
+                        tools:colorAccent="@color/lighter_app_green" />
 
-                        <EditText
-                            android:layout_width="@dimen/_60sdp"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
+                    <CheckBox
+                        android:id="@+id/copd"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:spinnerMode="dropdown"
+                        android:text="COPD"
+                        android:textColor="@color/black" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+                    <CheckBox
+                        android:id="@+id/asthama"
+                        android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:layout_weight="1"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_12sdp"
-                            android:text="SPO2-"
-                            android:textColor="@color/text_black"/>
+                        android:spinnerMode="dropdown"
+                        android:text="BRONCHIAL ASTHAMA"
+                        android:textColor="@color/black" />
 
-                        <EditText
-                            android:layout_width="@dimen/_60sdp"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+                    <CheckBox
+                        android:id="@+id/ihd"
+                        android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:layout_weight="1"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_12sdp"
-                            android:text="RR-"
-                            android:textColor="@color/text_black"/>
+                        android:spinnerMode="dropdown"
+                        android:text="IHD"
+                        android:textColor="@color/black" />
 
-                        <EditText
-                            android:layout_width="@dimen/_60sdp"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
-
+                    <CheckBox
+                        android:clickable="true"
+                        android:id="@+id/others"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:spinnerMode="dropdown"
+                        android:text="OTHERS"
+                        android:textColor="@color/black" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/otherComorbidities"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <TextView
+                        android:id="@+id/otherLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/other_comorbidities"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/_12sdp" />
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_otherComorbidities"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:backgroundTint="@color/darker_app_green"
+                        android:singleLine="false"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
@@ -247,42 +224,122 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/risk_of_type_2_failure"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupRisk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/riskYes"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="25dp"
+                    android:checked="true"
+                    android:text="Yes"
+                    android:textColor="@color/black" />
+
+                <RadioButton
+                    android:id="@+id/riskNo"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="25dp"
+                    android:text="No"
+                    android:textColor="@color/black" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/target_saturation"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupSaturation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/saturationLow"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="25dp"
+                    android:checked="true"
+                    android:text="88-92 %"
+                    android:textColor="@color/black" />
+
+                <RadioButton
+                    android:id="@+id/saturationHigh"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="25dp"
+                    android:text="94-98 %"
+                    android:textColor="@color/black" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_15sdp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_12sdp"
-                android:text="@string/abg"
-                android:textColor="@color/text_black"/>
+                android:text="@string/baseline_parameters"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
 
             <LinearLayout
-                android:layout_marginStart="@dimen/_15sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:orientation="horizontal">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_12sdp"
-                            android:text="PH-"
-                            android:textColor="@color/text_black"/>
+                            android:text="HR-"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/_12sdp" />
 
-                        <EditText
-                            android:layout_width="@dimen/_60sdp"
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/hr"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_height="wrap_content"/>
+                            android:backgroundTint="@color/darker_app_green"
+                            android:textColor="@color/black" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -290,17 +347,21 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_12sdp"
-                            android:text="PCO2-"
-                            android:textColor="@color/text_black"/>
+                            android:text="BP-"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/_12sdp" />
 
-                        <EditText
-                            android:layout_width="@dimen/_60sdp"
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/bp"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_height="wrap_content"/>
+                            android:backgroundTint="@color/darker_app_green"
+                            android:textColor="@color/black" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -314,17 +375,21 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_12sdp"
-                            android:text="PO2-"
-                            android:textColor="@color/text_black"/>
+                            android:text="SPO2-"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/_12sdp" />
 
-                        <EditText
-                            android:layout_width="@dimen/_60sdp"
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/spo2"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_height="wrap_content"/>
+                            android:backgroundTint="@color/darker_app_green"
+                            android:textColor="@color/black" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -332,17 +397,144 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_12sdp"
-                            android:text="HCO3-"
-                            android:textColor="@color/text_black"/>
+                            android:text="RR-"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/_12sdp" />
 
-                        <EditText
-                            android:layout_width="@dimen/_60sdp"
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/rr"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_height="wrap_content"/>
+                            android:backgroundTint="@color/darker_app_green"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/abg"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PH-"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/ph"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:backgroundTint="@color/darker_app_green"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PCO2-"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/pco2"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:backgroundTint="@color/darker_app_green"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PO2-"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/po2"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:backgroundTint="@color/darker_app_green"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="HCO3-"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/hco3"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:backgroundTint="@color/darker_app_green"
+                            android:textColor="@color/black" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -351,35 +543,37 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/_12sdp"
                         android:text="LACTATE-"
-                        android:textColor="@color/text_black"/>
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/_12sdp" />
 
-                    <EditText
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/lactate"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:hint="If Available"/>
+                        android:backgroundTint="@color/darker_app_green"
+                        android:hint="If Available"
+                        android:textColor="@color/black" />
                 </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_12sdp"
                 android:text="@string/delivery_system_recomended"
-                android:textColor="@color/text_black"/>
-
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
             <RadioGroup
                 android:id="@+id/radioGroupDeliverySystem"
                 android:layout_width="wrap_content"
@@ -387,17 +581,423 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:orientation="horizontal">
                 <RadioButton
+                    android:id="@+id/deliveryYes"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="25dp"
-                    android:text="Yes" />
+                    android:text="Yes"
+                    android:textColor="@color/black" />
                 <RadioButton
+                    android:id="@+id/deliveryNo"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="25dp"
-                    android:text="No" />
+                    android:checked="true"
+                    android:text="No"
+                    android:textColor="@color/black" />
             </RadioGroup>
         </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/deliverySystem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <TextView
+                android:id="@+id/deliverySystemLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/delivery_system_used"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_deliverySystem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:backgroundTint="@color/darker_app_green"
+                android:singleLine="false"
+                android:textColor="@color/black" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/flow_rate_recommended"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/flowRateRecommended"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:backgroundTint="@color/darker_app_green"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/flow_rate_given"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/flowRateGiven"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:backgroundTint="@color/darker_app_green"
+                android:textColor="@color/black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="L/min"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/monitoring_recomended"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <RadioGroup
+                android:id="@+id/radioGroupMonitoring"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:orientation="vertical">
+                    <RadioButton
+                        android:id="@+id/min15"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="25dp"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="15mins"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="@dimen/_5sdp"/>
+                    <RadioButton
+                        android:id="@+id/min30"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="25dp"
+                        android:layout_weight="1"
+                        android:text="30mins"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="@dimen/_5sdp"/>
+                    <RadioButton
+                        android:id="@+id/hourly"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="25dp"
+                        android:layout_weight="1"
+                        android:text="Hourly"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="@dimen/_5sdp"/>
+                    <RadioButton
+                        android:id="@+id/hourly2"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="25dp"
+                        android:layout_weight="1"
+                        android:text="2 hourly"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="@dimen/_5sdp"/>
+                    <RadioButton
+                        android:id="@+id/otherPeriod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:text="Other"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="@dimen/_5sdp"/>
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_monitorOther"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:backgroundTint="@color/darker_app_green"
+                        android:hint="Monitoring Period Recommended"
+                        android:textColorHint="@color/text_black"
+                        android:singleLine="false"
+                        android:textColor="@color/black"
+                        android:visibility="visible" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/target_oxygen_recommended"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/targetOxygenRec"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:backgroundTint="@color/darker_app_green"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_oxygen_started"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/_12sdp" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/oxygenTime"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:backgroundTint="@color/darker_app_green"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/_12sdp" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/oxygenDate"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:backgroundTint="@color/darker_app_green"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_to_achieve_target"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_targetAchieveTime"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:backgroundTint="@color/darker_app_green"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mews"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_mews"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:backgroundTint="@color/darker_app_green"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mews_trigger_initiated"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <RadioGroup
+                android:id="@+id/radioGroupMews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/mewsYes"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="25dp"
+                    android:checked="true"
+                    android:text="Yes"
+                    android:textColor="@color/black" />
+                <RadioButton
+                    android:id="@+id/mewsNo"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="25dp"
+                    android:text="No"
+                    android:textColor="@color/black" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/weaning_start_time"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/_12sdp" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/weaningTime"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:backgroundTint="@color/darker_app_green"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/_12sdp" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/weaningDate"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:backgroundTint="@color/darker_app_green"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/oxygen_off_time"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/_12sdp" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/oxygenOffTime"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:backgroundTint="@color/darker_app_green"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/_12sdp" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/oxygenOffDate"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:backgroundTint="@color/darker_app_green"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/complication"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_12sdp" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_complication"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:backgroundTint="@color/darker_app_green"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/savePatientBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@color/lighter_app_green"
+            android:outlineAmbientShadowColor="@color/darker_app_green"
+            android:text="@string/save"
+            android:textColor="@color/darker_app_green" />
+    </LinearLayout>
 
 </ScrollView>

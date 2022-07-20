@@ -1,5 +1,6 @@
 package com.example.notification_trial02
 
+import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -7,18 +8,31 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Build
 import android.util.Log
 import android.widget.RemoteViews
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
+import com.example.notification_trial02.modals.PatientAndHospital
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
+
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     private val ADMIN_CHANNEL_ID = "admin_channel"
     private val TAG = "NotificationTAG"
+    private var dbRef = FirebaseDatabase.getInstance()
+
+    private var db = FirebaseFirestore.getInstance()
 
     override fun onNewToken(token: String){
         super.onNewToken(token)
@@ -31,20 +45,40 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         if (remoteMessage.notification != null){
             Log.d(TAG, "notification not null")
-            generateNotifictaion(remoteMessage.notification!!.title!!, remoteMessage.notification!!.body!!)
+            val name = remoteMessage.data.get("name")
+            val age = remoteMessage.data.get("age")
+            val sex = remoteMessage.data.get("sex")
+            val hospitalNumber = remoteMessage.data.get("hospitalNumber")
+            val area = remoteMessage.data.get("area")
+            generateNotifictaion(remoteMessage.notification!!.title!!, remoteMessage.notification!!.body!!,
+                name!!, age!!, sex!!, hospitalNumber!!, area!!)
         }
 
         if (remoteMessage.data.size > 0){ //when sending to particular user
             val title = remoteMessage.data.get("title")
             val message = remoteMessage.data.get("message")
+            val name = remoteMessage.data.get("name")
+            val age = remoteMessage.data.get("age")
+            val sex = remoteMessage.data.get("sex")
+            val hospitalNumber = remoteMessage.data.get("hospitalNumber")
+            val area = remoteMessage.data.get("area")
+
             Log.d(TAG, "title and message dispatched $title and $message")
-            generateNotifictaion(title!!, message!!)
+            generateNotifictaion(title!!, message!!, name!!, age!!, sex!!, hospitalNumber!!, area!!)
         }
     }
 
-    private fun generateNotifictaion(title : String, message : String){
+    private fun generateNotifictaion(title : String, message : String, name : String?, age : String?,
+                                     sex : String?, hospitalNumber : String?, area : String?){
 
         Log.d(TAG, "generate Notification() $title and $message")
+        Log.d(TAG, "generate Notification() $name and $age and $sex")
+
+        if (age != null && name != null && sex!= null) {
+            storePatient(name,age,sex, hospitalNumber!!, area!!)
+        }else{
+            Log.d(TAG, "NAS is null")
+        }
 
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -60,12 +94,15 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }
         //FLAG_ONE_SHOT : bcz we need the pending intent only once, after user clicks the notification it gets destroyed
 
+        val alarmSound: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+
         val notificationBuilder = NotificationCompat.Builder(this, ADMIN_CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notifications)
             .setAutoCancel(true)
             .setVibrate(longArrayOf(1000,1000,1000,1000)) //viberates for 1 sec, holds for 1 sec,viberates for 1 sec, holds for 1 sec,
             .setOnlyAlertOnce(true)
             .setContentIntent(pendingIntent)
+            .setSound(alarmSound)
 
         notificationBuilder.setContent(getRemoteView(title, message))
 
@@ -76,6 +113,34 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             setupChannels(notificationManager)
 
         notificationManager.notify(notificationID, notificationBuilder.build())
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun storePatient(name: String, age: String, sex: String, hospitalNumber : String, area : String) {
+
+        val sdf = SimpleDateFormat("dd.MM.yyyy 'at' HH:mm:ss")
+        val currentDateandTime = sdf.format(Date())
+
+        val id : String = UUID.randomUUID().toString().replace("-", "").uppercase(Locale.getDefault())
+
+        val patient = PatientAndHospital(name, age.toInt(), sex, currentDateandTime,area, hospitalNumber, id)
+
+        db.collection(PENDING).document(id).set(patient)
+            .addOnSuccessListener {
+                Log.d(TAG, "Patient Added to pending List")
+                Toast.makeText(this, "Patient added to the pending list", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                Log.d(TAG, it.message!!)
+            }
+//        val ref = dbRef.getReference(PENDING_PATIENT_LIST).push()
+//
+//        ref.setValue(patient).addOnSuccessListener {
+//            Toast.makeText(this, "New patient added to the pending list", Toast.LENGTH_SHORT).show()
+//        }
+//            .addOnFailureListener{
+//                Toast.makeText(this, "Failed to store details of a patient in pending list.", Toast.LENGTH_SHORT).show()
+//            }
     }
 
     private fun getRemoteView(title: String?, message: String?): RemoteViews? {

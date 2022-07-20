@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".adminSideFragments.RecyclerView.PendingPatientListFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/patientListLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Patient List"
+            android:textSize="@dimen/_26sdp"
+            android:fontFamily="@font/arbutus"
+            android:gravity="center_horizontal"
+            android:textColor="@color/dark_app_green"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/_5sdp"/>
+
+        <View
+            android:layout_width="150dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:background="@color/darker_app_green"
+            android:layout_gravity="center"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_150sdp"/>
+
+            <TextView
+                android:id="@+id/errMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fetching_error_msg"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/arbutus"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:textColor="@color/error_red"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/errorImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/error_pic"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:visibility="gone"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/patientRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:visibility="visible"
+                tools:listitem="@layout/patient_view" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">notification_trial02</string>
+    <string name="app_name">Oxylife</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_login">LoginActivity</string>
@@ -19,5 +19,59 @@
     <string name="oxygen_prescription"><u>Oxygen Prescription :</u></string>
     <string name="reason_for_oxygen_therapy"><u>Reason For Oxygen Therapy :</u></string>
     <string name="abg"><u>ABG:</u></string>
-    <string name="delivery_system_recomended"><u>Delivery System Recomended ? :</u></string>
+    <string name="delivery_system_recomended"><u>Delivery System Recommended ? :</u></string>
+    <string name="need_oxygen_therapy">Need Oxygen Therapy ?</string>
+    <string name="give_details">Give Details</string>
+    <string name="Required">*Required</string>
+    <string name="ready_to_serve_the_nation">Ready to serve the nation ?</string>
+    <string name="pretherapy_form">Pretherapy Form</string>
+    <string name="prescription">Prescription</string>
+    <string name="delivery_system_used"><u>Delivery System Used:</u></string>
+    <string name="flow_rate"><u>Flow Rate</u></string>
+    <string name="humidification"><u>Humidification</u></string>
+    <string name="weaning_instructions"><u>Weaning Instructions</u></string>
+    <string name="doctor_s_name"><u>Doctor\'s Name</u></string>
+    <string name="designation"><u>Designation</u></string>
+    <string name="AppName">Oxylife</string>
+    <string name="ramaiah_medical_college">Ramaiah Medical College</string>
+    <string name="title_activity_admin_navigation">AdminNavigationActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="save">Save</string>
+    <string name="kmc_number"><u>KMC Number:</u></string>
+    <string name="about_us">About us</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="name">Name:</string>
+    <string name="developer_name">Bhagya Patel</string>
+    <string name="mail">bhagyaspatel0911@gmail.com</string>
+    <string name="github">https://github.com/bhagyaspatel</string>
+    <string name="linkdn">https://www.linkedin.com/in/bhagya-patel-9836081b7/</string>
+    <string name="college_name">Ramaiah Institute Of Technology, Bangalore</string>
+    <string name="college">College:</string>
+    <string name="pending_list">Patient pending oxygen prescription</string>
+    <string name="done_list">Data of patient prescribed oxygen</string>
+    <string name="show_checklist">Show checklist</string>
+    <string name="close">Close</string>
+    <string name="monitoring_recomended"><u>Monitoring Recommended:</u></string>
+    <string name="complication"><u>Complication:</u></string>
+    <string name="date"><u>Date:</u></string>
+    <string name="oxygen_off_time"><u>Oxygen Off Time:</u></string>
+    <string name="weaning_start_time"><u>Weaning Start Time:</u></string>
+    <string name="mews_trigger_initiated"><u>MEWS trigger initiated</u></string>
+    <string name="mews"><u>MEWS:</u></string>
+    <string name="time_to_achieve_target"><u>Time to achieve target:</u></string>
+    <string name="time_oxygen_started"><u>Time Oxygen Started:</u></string>
+    <string name="target_oxygen_recommended"><u>Target Oxygen Recommended:</u></string>
+    <string name="flow_rate_given"><u>Flow Rate Given:</u></string>
+    <string name="flow_rate_recommended"><u>Flow Rate Recommended:</u></string>
+    <string name="other_comorbidities"><u>Other Comorbidities:</u></string>
+    <string name="fetching_error_msg">OOPS!!..Some Error Occurred while fetching the data</string>
 </resources>

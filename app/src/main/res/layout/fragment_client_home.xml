@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".clientSideFragments.ClientHomeFragment">
+
+    <ImageView
+        android:id="@+id/oxygenPic"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_210sdp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/oxygen_pic"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/cardBtn"
+        android:clickable="true"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/need_oxygen_therapy"
+        android:textSize="@dimen/_30sdp"
+        android:fontFamily="@font/bungee"
+        android:textColor="@color/white"
+        android:background="@drawable/card"
+        app:layout_constraintTop_toBottomOf="@+id/oxygenPic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_80sdp"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:gravity="center"
+        android:padding="@dimen/_6sdp"/>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/light_app_green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/Theme.Notification_trial02.PopupOverlay">
+        <include
+            layout="@layout/toolbar_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.appcompat.widget.Toolbar>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

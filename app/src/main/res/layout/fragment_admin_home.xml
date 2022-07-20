@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTintMode="src_over"
+    android:background="@drawable/bg"
+    tools:context=".adminSideFragments.AdminHomeFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/light_app_green">
+
+        <include layout="@layout/toolbar_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.appcompat.widget.Toolbar>
+
+<!--    <TextView-->
+<!--        android:id="@+id/welcomeText"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/toolbar"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Welcome..."-->
+<!--        android:gravity="start"-->
+<!--        android:layout_marginStart="@dimen/_10sdp"-->
+<!--        android:layout_marginTop="@dimen/_26sdp"-->
+<!--        android:textColor="@color/dark_app_green"-->
+<!--        android:fontFamily="@font/arbutus"-->
+<!--        android:textSize="@dimen/_26sdp"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/sloganText"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/welcomeText"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/ready_to_serve_the_nation"-->
+<!--        android:gravity="start"-->
+<!--        android:layout_marginStart="@dimen/_10sdp"-->
+<!--        android:layout_marginTop="@dimen/_40sdp"-->
+<!--        android:textColor="@color/dark_app_green"-->
+<!--        android:fontFamily="@font/arbutus"-->
+<!--        android:textSize="@dimen/_26sdp"/>-->
+
+    <TextView
+        android:id="@+id/showListBtn"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pending_list"
+        android:textSize="@dimen/_16sdp"
+        android:fontFamily="@font/arbutus"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:background="@drawable/card"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="@dimen/_70sdp"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:padding="@dimen/_6sdp"
+        tools:targetApi="p" />
+
+    <TextView
+        android:id="@+id/showDonePatientBtn"
+        app:layout_constraintTop_toBottomOf="@id/showListBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/done_list"
+        android:textSize="@dimen/_16sdp"
+        android:fontFamily="@font/arbutus"
+        android:textColor="@color/white"
+        android:background="@drawable/card2"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:padding="@dimen/_6sdp"
+        tools:targetApi="p" />
+
+<!--    <com.google.android.material.navigation.NavigationView-->
+<!--        android:id="@+id/navigation_view"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="start"-->
+<!--        android:fitsSystemWindows="true"-->
+<!--        app:headerLayout="@layout/toolbar_layout"-->
+<!--        app:menu="@menu/drawer_menu"/>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

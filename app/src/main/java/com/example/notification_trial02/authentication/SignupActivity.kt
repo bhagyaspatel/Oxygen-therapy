@@ -7,16 +7,16 @@ import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
-import com.example.notification_trial02.MainActivity
-import com.example.notification_trial02.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.notification_trial02.databinding.ActivitySignupBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignupActivity : AppCompatActivity() {
 
     private val TAG = "Signup"
     lateinit var binding: ActivitySignupBinding
-
     private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +25,11 @@ class SignupActivity : AppCompatActivity() {
         binding = ActivitySignupBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        binding.switchAdminBtn.setOnClickListener {
+            val intent = Intent (this, AdminLoginActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.etEmail.addTextChangedListener{
             binding.etEmail.error = null
@@ -48,60 +53,31 @@ class SignupActivity : AppCompatActivity() {
 
         binding.signupBtn.setOnClickListener {
 
-//            if (auth.currentUser != null) {
-//                if (auth.currentUser?.isEmailVerified() == true) {
-//                    binding.etEmail.setText("")
-//                    binding.etPassword.setText("")
-//                    binding.etConfirmPassword.setText("")
-//
-//                    val intent = Intent(this, MainActivity::class.java)
-//                    startActivity(intent)
-//                    finish()
-//                    Log.d(TAG, "email verified")
-//                }else{
-//                    Log.d(TAG, "email not verified yet")
-//                }
-//        }else{
-                val email = binding.etEmail.text.toString()
-                val password = binding.etPassword.text.toString()
-                val confirmPassword = binding.etConfirmPassword.text.toString()
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
+            val confirmPassword = binding.etConfirmPassword.text.toString()
 
-                if (validate(email, password, confirmPassword)) {
-                    auth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(this) {
-//                            auth.currentUser?.sendEmailVerification()
-//                                ?.addOnCompleteListener { task ->
-//                                    if (task.isSuccessful) {
-//                                        Toast.makeText(
-//                                            this,
-//                                            "User registered successfully please verify your email-id",
-//                                            Toast.LENGTH_SHORT
-//                                        ).show()
-//                                    } else {
-//                                        Log.d(
-//                                            TAG,
-//                                            "task unsuccessful " + task.exception?.message.toString()
-//                                        )
-//                                    }
-//                              }
-                            val intent = Intent(this, MainActivity::class.java)
-                            startActivity(intent)
-                            finish()
-                            Log.d(TAG, "signed in")
-                        }
-                        .addOnFailureListener {
-                            Toast.makeText(
-                                this,
-                                "The email address is already in use by another account.",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            Log.e(TAG, "onCreate: ${it.message}",)
-                        }
-                }
-//            }
+            if (validate(email, password, confirmPassword)) {
+                Toast.makeText(this, "Provide the hospitals' necessary details to complete the sign up", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, HospitalDetailsActivity::class.java)
+                intent.putExtra("email", email)
+                intent.putExtra("password", password)
+                startActivity(intent)
+                finish()
+            }
+//          }
         }
 
     }
+
+//    private fun addFragmentToActivity(supportFragmentManager: FragmentManager, fragment: Fragment?, frameId: Int) {
+//        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+//        if (fragment != null) {
+//            transaction.add(frameId, fragment)
+//        }
+//        transaction.commit()
+//    }
+
 
     private fun validate(email: String, password: String, confirmPassword: String): Boolean {
         var valid = true
