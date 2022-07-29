@@ -12,7 +12,7 @@
 
     <TextView
         android:id="@+id/doneName"
-        android:textColor="@color/darker_app_green"
+        android:textColor="@color/darker_app_blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,7 +21,7 @@
 
     <TextView
         android:id="@+id/doneAge"
-        android:textColor="@color/darker_app_green"
+        android:textColor="@color/darker_app_blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -32,7 +32,7 @@
     <TextView
         android:id="@+id/doneSex"
         android:layout_width="wrap_content"
-        android:textColor="@color/darker_app_green"
+        android:textColor="@color/darker_app_blue"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/doneAge"
@@ -41,7 +41,7 @@
 
     <ImageButton
         android:id="@+id/doneDeleteBtn"
-        android:background="@color/lighter_app_green"
+        android:background="@color/lighter_app_offwhite"
         android:layout_width="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -51,7 +51,7 @@
     <TextView
         android:id="@+id/doneDate"
         android:layout_width="wrap_content"
-        android:textColor="@color/darker_app_green"
+        android:textColor="@color/darker_app_blue"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/doneName"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
     <TextView
         android:id="@+id/doneArea"
         android:layout_width="wrap_content"
-        android:textColor="@color/darker_app_green"
+        android:textColor="@color/darker_app_blue"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/doneDate"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
 
     <TextView
         android:id="@+id/doneHospitalNum"
-        android:textColor="@color/darker_app_green"
+        android:textColor="@color/darker_app_blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/doneArea"

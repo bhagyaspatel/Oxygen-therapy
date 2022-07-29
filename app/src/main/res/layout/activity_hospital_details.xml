@@ -16,7 +16,7 @@
         android:textSize="@dimen/_16sdp"
         android:textStyle="bold"
         android:fontFamily="@font/arbutus"
-        android:textColor="@color/darker_app_green"
+        android:textColor="@color/darker_app_blue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/_2sdp"
-        android:background="@color/darker_app_green"/>
+        android:background="@color/darker_app_blue"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameLabel"
@@ -41,18 +41,18 @@
         app:helperText="@string/Required"
         app:helperTextTextColor="@color/danger_red"
         android:textColorHint="@color/bluish_app_green"
-        app:startIconTint="@color/darker_app_green"
-        app:boxStrokeColor="@color/darker_app_green"
-        app:hintTextColor="@color/darker_app_green"
+        app:startIconTint="@color/darker_app_blue"
+        app:boxStrokeColor="@color/darker_app_blue"
+        app:hintTextColor="@color/darker_app_blue"
         android:layout_marginTop="@dimen/_50sdp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_name"
-            android:textColor="@color/darker_app_green"
+            android:textColor="@color/darker_app_blue"
             android:singleLine="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:shadowColor="@color/darker_app_green"
+            android:shadowColor="@color/darker_app_blue"
             android:hint="Name of the hospital"
             android:textColorHint="#000000">
 
@@ -69,17 +69,17 @@
         app:helperText="@string/Required"
         app:helperTextTextColor="@color/danger_red"
         android:textColorHint="@color/bluish_app_green"
-        app:startIconTint="@color/darker_app_green"
-        app:boxStrokeColor="@color/darker_app_green"
-        app:hintTextColor="@color/darker_app_green"
+        app:startIconTint="@color/darker_app_blue"
+        app:boxStrokeColor="@color/darker_app_blue"
+        app:hintTextColor="@color/darker_app_blue"
         android:layout_marginTop="@dimen/_16sdp" >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_area"
-            android:textColor="@color/darker_app_green"
+            android:textColor="@color/darker_app_blue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:shadowColor="@color/darker_app_green"
+            android:shadowColor="@color/darker_app_blue"
             android:hint="Area"
             android:textColorHint="#000000">
 
@@ -96,7 +96,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/_100sdp"
-        android:backgroundTint="@color/light_app_green"
+        android:backgroundTint="@color/light_app_blue"
         android:background="@drawable/card"
         android:padding="@dimen/_6sdp"
         android:shadowColor="@color/bluish_app_green"

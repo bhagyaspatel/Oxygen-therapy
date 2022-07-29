@@ -18,7 +18,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:background="@color/light_app_green"
+            android:background="@color/light_app_blue"
             app:popupTheme="@style/Theme.Notification_trial02.PopupOverlay">
 
             <include layout="@layout/toolbar_list"

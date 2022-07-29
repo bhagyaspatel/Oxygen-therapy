@@ -24,7 +24,7 @@
             android:textSize="@dimen/_26sdp"
             android:fontFamily="@font/arbutus"
             android:gravity="center_horizontal"
-            android:textColor="@color/dark_app_green"
+            android:textColor="@color/dark_app_blue"
             android:textStyle="bold"/>
 
         <View
@@ -34,7 +34,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/_1sdp"
-            android:background="@color/darker_app_green"
+            android:background="@color/darker_app_blue"
             android:layout_gravity="center"/>
 
         <LinearLayout
@@ -51,7 +51,7 @@
                 android:textColor="@color/text_black"/>
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_rsn"
-                android:backgroundTint="@color/darker_app_green"
+                android:backgroundTint="@color/darker_app_blue"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:singleLine="false"
@@ -73,7 +73,7 @@
                 android:textSize="@dimen/_12sdp"/>
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_flowRate"
-                android:backgroundTint="@color/darker_app_green"
+                android:backgroundTint="@color/darker_app_blue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
@@ -99,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
-                android:backgroundTint="@color/darker_app_green"
+                android:backgroundTint="@color/darker_app_blue"
                 android:singleLine="false"/>
         </LinearLayout>
 
@@ -177,7 +177,7 @@
                 android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
-                android:backgroundTint="@color/darker_app_green"
+                android:backgroundTint="@color/darker_app_blue"
                 android:singleLine="false"/>
         </LinearLayout>
 
@@ -221,7 +221,7 @@
                 android:id="@+id/et_deliverySystem"
                 android:layout_width="match_parent"
                 android:textColor="@color/black"
-                android:backgroundTint="@color/darker_app_green"
+                android:backgroundTint="@color/darker_app_blue"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:singleLine="false"/>
@@ -247,7 +247,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:textColor="@color/black"
-                android:backgroundTint="@color/darker_app_green"
+                android:backgroundTint="@color/darker_app_blue"
                 android:singleLine="false"/>
 
             <TextView
@@ -263,7 +263,7 @@
                 android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
-                android:backgroundTint="@color/darker_app_green"
+                android:backgroundTint="@color/darker_app_blue"
                 android:singleLine="false"/>
 
             <TextView
@@ -279,7 +279,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:layout_marginStart="@dimen/_5sdp"
-                android:backgroundTint="@color/darker_app_green"
+                android:backgroundTint="@color/darker_app_blue"
                 android:singleLine="false"/>
         </LinearLayout>
 
@@ -287,11 +287,11 @@
             android:id="@+id/savePrescriptionBtn"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:background="@color/lighter_app_green"
+            android:background="@color/lighter_app_offwhite"
             android:layout_gravity="center"
             android:text="@string/save"
-            android:outlineAmbientShadowColor="@color/darker_app_green"
-            android:textColor="@color/darker_app_green"
+            android:outlineAmbientShadowColor="@color/darker_app_blue"
+            android:textColor="@color/darker_app_blue"
             android:layout_marginTop="@dimen/_20sdp" />
 
     </LinearLayout>

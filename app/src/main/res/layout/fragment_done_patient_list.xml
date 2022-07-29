@@ -21,7 +21,7 @@
             android:textSize="@dimen/_26sdp"
             android:fontFamily="@font/arbutus"
             android:gravity="center_horizontal"
-            android:textColor="@color/dark_app_green"
+            android:textColor="@color/dark_app_blue"
             android:textStyle="bold"
             android:layout_marginTop="@dimen/_5sdp"/>
 
@@ -29,7 +29,7 @@
             android:layout_width="180dp"
             android:layout_height="4dp"
             android:layout_marginTop="@dimen/_1sdp"
-            android:background="@color/darker_app_green"
+            android:background="@color/darker_app_blue"
             android:layout_gravity="center"/>
 
 

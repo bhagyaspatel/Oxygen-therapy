@@ -30,7 +30,7 @@
             android:textSize="@dimen/_26sdp"
             android:fontFamily="@font/arbutus"
             android:gravity="center_horizontal"
-            android:textColor="@color/dark_app_green"
+            android:textColor="@color/dark_app_blue"
             android:textStyle="bold"/>
 
         <View
@@ -40,7 +40,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/_1sdp"
-            android:background="@color/darker_app_green"
+            android:background="@color/darker_app_blue"
             android:layout_gravity="center"/>
 
         <LinearLayout
@@ -807,11 +807,11 @@
             android:id="@+id/closeBtn"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:background="@color/lighter_app_green"
+            android:background="@color/lighter_app_offwhite"
             android:layout_gravity="center"
             android:text="@string/close"
-            android:outlineAmbientShadowColor="@color/darker_app_green"
-            android:textColor="@color/darker_app_green"
+            android:outlineAmbientShadowColor="@color/darker_app_blue"
+            android:textColor="@color/darker_app_blue"
             android:layout_marginTop="@dimen/_20sdp" />
     </LinearLayout>
 

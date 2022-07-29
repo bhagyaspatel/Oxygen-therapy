@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/adminSignupContainer"
-    tools:context=".authentication.AdminSignupActivity">
+    tools:context=".authentication.SignupActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/bungee"
             android:text="Welcome"
-            android:textColor="@color/dark_app_green"
+            android:textColor="@color/dark_app_blue"
             android:textSize="@dimen/_30sdp"/>
 
         <TextView
@@ -57,19 +57,19 @@
                 android:layout_height="wrap_content"
                 android:hint="Enter Your Email"
                 android:textColorHint="#3D3B3B"
-                app:startIconTint="@color/darker_app_green"
-                app:boxStrokeColor="@color/darker_app_green"
-                app:hintTextColor="@color/darker_app_green"
+                app:startIconTint="@color/darker_app_blue"
+                app:boxStrokeColor="@color/darker_app_blue"
+                app:hintTextColor="@color/darker_app_blue"
                 app:startIconDrawable="@drawable/ic_email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_email"
-                    android:textColor="@color/darker_app_green"
+                    android:textColor="@color/darker_app_blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_4sdp"
                     android:inputType="textEmailAddress"
-                    android:shadowColor="@color/darker_app_green"
+                    android:shadowColor="@color/darker_app_blue"
                     android:textColorHint="#000000">
 
                 </com.google.android.material.textfield.TextInputEditText>
@@ -83,9 +83,9 @@
                 android:hint="Enter Password"
                 android:textColorHint="#3D3B3B"
                 android:transitionName="password_transition"
-                app:startIconTint="@color/darker_app_green"
-                app:boxStrokeColor="@color/darker_app_green"
-                app:hintTextColor="@color/darker_app_green"
+                app:startIconTint="@color/darker_app_blue"
+                app:boxStrokeColor="@color/darker_app_blue"
+                app:hintTextColor="@color/darker_app_blue"
                 app:passwordToggleEnabled="true"
                 app:startIconDrawable="@drawable/ic_lock">
 
@@ -94,8 +94,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:textColor="@color/darker_app_green"
-                    android:shadowColor="@color/darker_app_green"
+                    android:textColor="@color/darker_app_blue"
+                    android:shadowColor="@color/darker_app_blue"
                     android:textColorHint="#000000">
 
                 </com.google.android.material.textfield.TextInputEditText>
@@ -110,9 +110,9 @@
                 android:layout_marginBottom="@dimen/_4sdp"
                 android:textColorHint="#3D3B3B"
                 android:transitionName="password_transition"
-                app:boxStrokeColor="@color/darker_app_green"
-                app:hintTextColor="@color/darker_app_green"
-                app:startIconTint="@color/darker_app_green"
+                app:boxStrokeColor="@color/darker_app_blue"
+                app:hintTextColor="@color/darker_app_blue"
+                app:startIconTint="@color/darker_app_blue"
                 app:passwordToggleEnabled="true"
                 app:startIconDrawable="@drawable/ic_lock">
 
@@ -120,9 +120,9 @@
                     android:id="@+id/et_confirm_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/darker_app_green"
+                    android:textColor="@color/darker_app_blue"
                     android:inputType="textPassword"
-                    android:shadowColor="@color/darker_app_green"
+                    android:shadowColor="@color/darker_app_blue"
                     android:textColorHint="#000000">
 
                 </com.google.android.material.textfield.TextInputEditText>
@@ -136,9 +136,9 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:fontFamily="@font/arbutus"
                 android:text="Sign Up"
-                android:textColor="@color/darker_app_green"
+                android:textColor="@color/darker_app_blue"
                 android:transitionName="btn_transition"
-                app:strokeColor="@color/darker_app_green">
+                app:strokeColor="@color/darker_app_blue">
             </com.google.android.material.button.MaterialButton>
 
             <Button
