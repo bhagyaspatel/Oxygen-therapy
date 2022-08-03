@@ -12,20 +12,36 @@
         tools:layout="@layout/fragment_admin_home" >
         <action
             android:id="@+id/action_adminHomeFragment_to_pendingPatientList"
-            app:destination="@id/pendingPatientList" />
+            app:destination="@id/pendingPatientList"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
         <action
             android:id="@+id/action_adminHomeFragment_to_donePatientListFragment"
-            app:destination="@id/donePatientListFragment" />
+            app:destination="@id/donePatientListFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
         <action
             android:id="@+id/xml"
             app:popUpTo="@id/admin_navigation"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_adminHomeFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
+            app:destination="@id/aboutFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
         <action
             android:id="@+id/action_adminHomeFragment_to_contactFragment"
-            app:destination="@id/contactFragment" />
+            app:destination="@id/contactFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
     </fragment>
     <fragment
         android:id="@+id/pendingPatientList"
@@ -34,7 +50,11 @@
         tools:layout="@layout/fragment_pending_patient_list" >
         <action
             android:id="@+id/action_pendingPatientList_to_postTherapyFormFragment"
-            app:destination="@id/postTherapyFormFragment" />
+            app:destination="@id/postTherapyFormFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
         android:id="@+id/pretherapyFormDetails"
@@ -46,6 +66,10 @@
             app:argType="string" />
         <action
             android:id="@+id/action_pretherapyFormDetails_to_adminHomeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
             app:popUpTo="@id/adminHomeFragment" />
     </fragment>
     <fragment
@@ -55,7 +79,11 @@
         tools:layout="@layout/fragment_done_patient_list" >
         <action
             android:id="@+id/action_donePatientListFragment_to_showPatientPrescription"
-            app:destination="@id/showPatientPrescription" />
+            app:destination="@id/showPatientPrescription"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
         android:id="@+id/postTherapyFormFragment"
@@ -67,7 +95,11 @@
             app:argType="string" />
         <action
             android:id="@+id/action_postTherapyFormFragment_to_pretherapyFormDetails"
-            app:destination="@id/pretherapyFormDetails" />
+            app:destination="@id/pretherapyFormDetails"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -86,7 +118,11 @@
         tools:layout="@layout/fragment_show_patient_prescription" >
         <action
             android:id="@+id/action_showPatientPrescription_to_showPatientForm"
-            app:destination="@id/showPatientForm" />
+            app:destination="@id/showPatientForm"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
         <argument
             android:name="id"
             app:argType="string" />
@@ -102,6 +138,10 @@
         <action
             android:id="@+id/action_showPatientForm_to_adminHomeFragment"
             app:destination="@id/adminHomeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
             app:popUpTo="@id/adminHomeFragment"
             app:popUpToInclusive="false" />
     </fragment>

@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
+<!--        <item name="colorPrimaryDark">@color/light_app_blue</item>-->
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -12,6 +13,15 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+<!--        <item name= "android:windowIsTranslucent">true</item>-->
+<!--        <item name="android:windowTranslucentStatus">true</item>-->
+
+<!--        <item name="android:windowNoTitle">true</item>-->
+<!--        <item name="android:windowContentOverlay">@null</item>-->
+<!--        <item name="android:windowBackground">@drawable/bg</item>-->
+        <!-- for avoiding black screen between activity transition from splash to main but its not working -->
+
     </style>
 
     <style name="roundImageView">
@@ -27,4 +37,5 @@
     <style name="Theme.Notification_trial02.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Notification_trial02.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

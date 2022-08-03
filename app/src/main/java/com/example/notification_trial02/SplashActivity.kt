@@ -20,6 +20,8 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed({
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-        }, 5000)
+            overridePendingTransition(R.anim.from_right , 0)
+            finish()
+        }, 4000)
     }
 }

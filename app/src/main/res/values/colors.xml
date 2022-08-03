@@ -20,8 +20,8 @@
     <color name="bluish_app_green">#016170</color>
 <!--    <color name="gradientLight">#96e4df</color>-->
 <!--    <color name="gradientDark">#4dccc6</color>-->
-    <color name="gradientLight">#7ee8fa</color>
-    <color name="gradientDark">#eec0c6</color>
+    <color name="gradientLight">#FDFBFB</color>
+    <color name="gradientDark">#ECEEEF</color>
 <!--    <color name="bluish_app_green">#016170</color>-->
     <color name="danger_red">#E61A1A</color>
     <color name="notification">#B1AAA5</color>
