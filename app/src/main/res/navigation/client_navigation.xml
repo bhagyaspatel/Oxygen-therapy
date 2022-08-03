@@ -12,13 +12,25 @@
         tools:layout="@layout/fragment_client_home" >
         <action
             android:id="@+id/action_clientHomeFragment_to_sendNotification"
-            app:destination="@id/sendNotification" />
+            app:destination="@id/sendNotification"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
         <action
             android:id="@+id/action_clientHomeFragment_to_aboutFragment2"
-            app:destination="@id/aboutFragment2" />
+            app:destination="@id/aboutFragment2"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
         <action
             android:id="@+id/action_clientHomeFragment_to_contactFragment2"
-            app:destination="@id/contactFragment2" />
+            app:destination="@id/contactFragment2"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
     </fragment>
     <fragment
         android:id="@+id/sendNotification"
@@ -28,6 +40,10 @@
         <action
             android:id="@+id/action_sendNotification_to_clientHomeFragment"
             app:destination="@id/clientHomeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
             app:popUpTo="@id/client_navigation"
             app:popUpToInclusive="false" />
     </fragment>
