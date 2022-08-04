@@ -22,6 +22,6 @@ class SplashActivity : AppCompatActivity() {
             startActivity(intent)
             overridePendingTransition(R.anim.from_right , 0)
             finish()
-        }, 4300)
+        }, 4500)
     }
 }
