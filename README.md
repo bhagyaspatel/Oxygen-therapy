@@ -6,7 +6,7 @@ serving the patient.
 I have used Firebase push notification for alert messaging and firebase database along with MVVM architecture.
 
 
-![splash screen!](https://user-images.githubusercontent.com/83541628/185384516-5921ea3b-82da-4d8d-bb52-612f462b793e.jpg=100x200)
+<img src="https://user-images.githubusercontent.com/83541628/185384516-5921ea3b-82da-4d8d-bb52-612f462b793e.jpg" width="200" height="400"/>
 
 
 ![login screen!](https://user-images.githubusercontent.com/83541628/185384649-1294e9d3-23a9-4084-a2c0-136837e99dc1.jpg)
